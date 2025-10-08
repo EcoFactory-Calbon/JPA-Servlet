@@ -2,21 +2,26 @@ package calbon.infra;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import io.github.cdimascio.dotenv.Dotenv;
+
 
 public class ConnectionFactory {
 
     private ConnectionFactory() {}
 
+    private static final Dotenv dotenv = Dotenv.load();
+
     public static Connection getConnection() {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection(
-                    "jdbc:postgresql://pg-2ad89544-germinare-a6bf.b.aivencloud.com:17646/inter?sslmode=require",
-                    "avnadmin",
-                    "AVNS_w955jhXXlsSYmpde_f-"
-            );
+
+            String url = dotenv.get("DB_URL");
+            String user = dotenv.get("DB_USER");
+            String password = dotenv.get("DB_PASSWORD");
+
+            return DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new RuntimeException("Erro ao conectar ao banco de dados", ex);
         }
     }
 }
