@@ -64,6 +64,8 @@ public class EmpresaServlet extends HttpServlet {
         // Salva empresa
         empresaDAO.save(empresa);
 
+        //comentario teste
+
         // Redireciona
         RequestDispatcher dispatcher = request.getRequestDispatcher("/empresa.jsp");
         dispatcher.forward(request, response);
