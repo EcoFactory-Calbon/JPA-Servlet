@@ -1,4 +1,4 @@
-package calbon.modelEmpresa;
+package com.example.servletcalbon.modelEmpresa;
 
 import java.util.List;
 import java.util.Optional;

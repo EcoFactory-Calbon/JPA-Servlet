@@ -1,4 +1,4 @@
-package calbon.modelFuncionario;
+package com.example.servletcalbon.modelFuncionario;
 
 import java.util.List;
 import java.util.Optional;

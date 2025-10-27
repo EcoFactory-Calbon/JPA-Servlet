@@ -1,4 +1,4 @@
-package com.example.servlet;
+package com.example.servletcalbon;
 
 import java.io.*;
 import jakarta.servlet.http.*;
