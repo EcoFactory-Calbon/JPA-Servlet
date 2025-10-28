@@ -119,6 +119,8 @@ public class EmpresaDAO implements IEmpresaDAO {
                 }
             }
 
+            ConnectionFactory.fechar(connection);
+
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao buscar empresa por CNPJ: " + ex.getMessage(), ex);
         }

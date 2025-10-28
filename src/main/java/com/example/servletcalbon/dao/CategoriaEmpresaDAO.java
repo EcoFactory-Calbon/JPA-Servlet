@@ -15,11 +15,19 @@ public class CategoriaEmpresaDAO implements ICategoriaEmpresa {
     }
 
     public CategoriaEmpresaDAO() {
-
     }
 
     @Override
     public CategoriaEmpresa save(CategoriaEmpresa categoria) {
+        // 1️⃣ Verifica se já existe categoria com esse nome
+        Optional<CategoriaEmpresa> existente = findByNome(categoria.getNome());
+
+        if (existente.isPresent()) {
+            // Já existe, retorna ela
+            return existente.get();
+        }
+
+        // 2️⃣ Se não existir, insere uma nova
         String sql = "INSERT INTO categoria_empresa (nome, descricao) VALUES (?, ?)";
         Connection connection = null;
 
@@ -137,5 +145,34 @@ public class CategoriaEmpresaDAO implements ICategoriaEmpresa {
         }
 
         return Optional.ofNullable(categoria);
+    }
+
+    // 🆕 Novo método para buscar por nome (usado dentro do save)
+    public Optional<CategoriaEmpresa> findByNome(String nome) {
+        String sql = "SELECT * FROM categoria_empresa WHERE nome = ?";
+        Connection connection = null;
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, nome);
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    CategoriaEmpresa categoria = new CategoriaEmpresa(
+                            rs.getLong("id"),
+                            rs.getString("nome"),
+                            rs.getString("descricao")
+                    );
+                    return Optional.of(categoria);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro ao buscar categoria por nome: " + ex.getMessage(), ex);
+        } finally {
+            ConnectionFactory.fechar(connection);
+        }
+
+        return Optional.empty();
     }
 }

@@ -13,8 +13,19 @@ public class PorteDAO {
     public PorteDAO(Connection connection) {
     }
 
-    // 🟢 SALVAR
+    public PorteDAO() {
+    }
+
+//    VERIFICA SE JA EXISTE ANTES DE INSERIR
     public Porte save(Porte porte) {
+        //verifica se ja existe um porte com esse nome
+        Optional<Porte> existente = findByNome(porte.getNome());
+        if (existente.isPresent()) {
+            //retorna o porte existente
+            return existente.get();
+        }
+        
+//        CRIA UM NOVO SE NÃO EXISTE
         String sql = "INSERT INTO porte (nome) VALUES (?)";
         Connection connection = null;
 
@@ -36,6 +47,34 @@ public class PorteDAO {
         }
 
         return porte;
+    }
+
+//    BUSCAR NOME USADO PELO USUARIO
+    public Optional<Porte> findByNome(String nome) {
+        String sql = "SELECT * FROM porte WHERE nome = ?";
+        Connection connection = null;
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, nome);
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    Porte porte = new Porte(
+                            rs.getInt("id"),
+                            rs.getString("nome")
+                    );
+                    return Optional.of(porte);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro ao buscar Porte por nome: " + ex.getMessage(), ex);
+        } finally {
+            ConnectionFactory.fechar(connection);
+        }
+
+        return Optional.empty();
     }
 
     // 🟡 ATUALIZAR
