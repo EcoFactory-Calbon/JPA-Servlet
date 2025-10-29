@@ -8,5 +8,8 @@ public interface ICategoriaEmpresa {
     CategoriaEmpresa update(CategoriaEmpresa categoria);
     void delete(Long id);
     List<CategoriaEmpresa> findAll();
-    Optional<CategoriaEmpresa> findById(Long id);
+
+    static Optional<CategoriaEmpresa> findById(Long id) {
+        return null;
+    }
 }
