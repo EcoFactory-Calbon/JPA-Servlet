@@ -11,13 +11,16 @@ import java.util.Optional;
 
 public class LocalizacaoDAO implements ILocalizacaoDAO {
 
+//    CONSTRUTOR SEM CONEXAO EXTERNA
     public LocalizacaoDAO(Connection connection) {
     }
 
+//    CONSTRUTOR PADRÃO
     public LocalizacaoDAO() {
 
     }
 
+//    METODO PARA SALVAR UM NOVO FUNCIONARIO NO BANCO
     @Override
     public Localizacao save(Localizacao localizacao) {
         String sql = "INSERT INTO localizacao (estado, cidade) VALUES (?, ?)";
