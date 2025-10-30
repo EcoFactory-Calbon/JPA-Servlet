@@ -54,6 +54,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 
 
+
+
 //    METODO PARA ATUALIZAR UM FUNCIONARIO
 @Override
     public Funcionario update(Funcionario funcionario) {
@@ -87,6 +89,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 
 
+
+
+
 //    METODO PARA DELETAR UM FUNCIONARIO
     @Override
     public void delete(Long numeroCracha) {
@@ -107,6 +112,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
             ConnectionFactory.fechar(connection);
         }
     }
+
+
+
 
 
 
@@ -149,6 +157,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
         return funcionarios;
     }
+
+
 
 
 
