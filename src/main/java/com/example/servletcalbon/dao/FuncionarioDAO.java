@@ -96,7 +96,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                Funcionario funcionario = new Funcionario();
+                Funcionario funcionario = new Funcionario(null, nome, email, empresa, cargo, telefone, estado, cidade);
                 funcionario.setNumeroCracha(rs.getString("numero_cracha"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setSobrenome(rs.getString("sobrenome"));

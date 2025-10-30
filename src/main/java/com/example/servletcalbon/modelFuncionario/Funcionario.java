@@ -14,7 +14,7 @@ public class Funcionario {
     private Long idLocalizacao;
 
     // CONSTRUTOR SEM PARAMETRO
-    public Funcionario() {
+    public Funcionario(String numeroCracha, String nome, String email, String empresa, String cargo, String telefone, String estado, String cidade) {
     }
 
 //    CONSTRUTOR COM PARAMETRO
