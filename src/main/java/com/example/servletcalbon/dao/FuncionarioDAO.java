@@ -110,6 +110,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 
 
+//    LISTA TODOS OS FUNCIONARIO
     @Override
     public List<Funcionario> findAll() {
         List<Funcionario> funcionarios = new ArrayList<>();
@@ -121,7 +122,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
             try (PreparedStatement ps = connection.prepareStatement(sql);
                  ResultSet rs = ps.executeQuery()) {
 
+//                O ResultSet percorre linha por linhaos registros do bd
                 while (rs.next()) {
+//                    Cria um novo objeto Funcioanrio com os dados
                     Funcionario f = new Funcionario(
                             rs.getString("numero_cracha"),
                             rs.getString("nome"),
@@ -132,6 +135,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
                             rs.getLong("id_cargo"),
                             rs.getLong("id_localizacao")
                     );
+//                    Adiciona funcionario a lista
                     funcionarios.add(f);
                 }
 
@@ -139,6 +143,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao listar funcionários: " + ex.getMessage(), ex);
         } finally {
+//            Fecha conexao
             ConnectionFactory.fechar(connection);
         }
 
