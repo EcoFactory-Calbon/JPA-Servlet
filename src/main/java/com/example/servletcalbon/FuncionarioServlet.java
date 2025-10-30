@@ -33,7 +33,9 @@ public class FuncionarioServlet extends HttpServlet {
         String estado = request.getParameter("estado");
 
 //        CRIA OBJETOS
-
+        Funcionario funcionario = new Funcionario(null, nome, email, campo, empresa, telefone, cidade, estado);
+        Localizacao localizacao = new Localizacao(null, estado, cidade);
+        Cargo cargo = new Cargo(cargo);
 
 //        CONEXAO DAOs
         Connection connection = ConnectionFactory.getConnection();
