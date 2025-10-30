@@ -9,51 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 public class FuncionarioDAO implements IFuncionarioDAO {
 
-//    METODO PARA INSERIR UM NOVO FUNCIONÁRIO NO BANCO
+//    INSERIR UM NOVO FUNCIONARIO
+
     @Override
     public Funcionario save(Funcionario funcionario) {
-//        SQL PARA INSERIR UM NOVO FUNCIONARIO
         String sql = "INSERT INTO funcionario (numero_cracha, nome, sobrenome, email, senha, is_gestor, id_cargo, id_localizacao) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-//        GARANTE QUE A CONEXÃO  E O STATEMENT SEJAM FECHADOS
-        try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-            stmt.setString(1, funcionario.getNumeroCracha());
-            stmt.setString(2, funcionario.getNome());
-            stmt.setString(3, funcionario.getSobrenome());
-            stmt.setString(4, funcionario.getEmail());
-            stmt.setString(5, funcionario.getSenha());
-            stmt.setBoolean(6, funcionario.isGestor());
-            stmt.setLong(7, funcionario.getIdCargo());
-            stmt.setLong(8, funcionario.getIdLocalizacao());
-
-//            EXECUTA INSERT
-            stmt.executeUpdate();
-
-//            RECUPERA O ID GERADO
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    funcionario.setId(rs.getLong(1));
-                }
-            }
-
-//            RECUPERA O ID GERADO AUTOMATICAMENTE PELO BD
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao salvar funcionário: " + e.getMessage(), e);
-        }
-
-        return funcionario;
-    }
-
-    @Override
-    public Funcionario update(Funcionario funcionario) {
-        String sql = "UPDATE funcionario SET numero_cracha = ?, nome = ?, sobrenome = ?, email = ?, senha = ?, " +
-                "is_gestor = ?, id_cargo = ?, id_localizacao = ? WHERE id = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -66,7 +29,34 @@ public class FuncionarioDAO implements IFuncionarioDAO {
             stmt.setBoolean(6, funcionario.isGestor());
             stmt.setLong(7, funcionario.getIdCargo());
             stmt.setLong(8, funcionario.getIdLocalizacao());
-            stmt.setLong(9, funcionario.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao salvar funcionário: " + e.getMessage(), e);
+        }
+
+        return funcionario;
+    }
+
+
+//    ATUALIZAR UM FUNCIONARIO NOVO
+    @Override
+    public Funcionario update(Funcionario funcionario) {
+        String sql = "UPDATE funcionario SET nome = ?, sobrenome = ?, email = ?, senha = ?, " +
+                "is_gestor = ?, id_cargo = ?, id_localizacao = ? WHERE numero_cracha = ?";
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, funcionario.getNome());
+            stmt.setString(2, funcionario.getSobrenome());
+            stmt.setString(3, funcionario.getEmail());
+            stmt.setString(4, funcionario.getSenha());
+            stmt.setBoolean(5, funcionario.isGestor());
+            stmt.setLong(6, funcionario.getIdCargo());
+            stmt.setLong(7, funcionario.getIdLocalizacao());
+            stmt.setString(8, funcionario.getNumeroCracha());
 
             stmt.executeUpdate();
 
@@ -77,14 +67,16 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         return funcionario;
     }
 
+
+//    EXCLUIR FUNCIONARIO
     @Override
-    public void delete(Long id) {
-        String sql = "DELETE FROM funcionario WHERE id = ?";
+    public void delete(Long numeroCracha) {
+        String sql = "DELETE FROM funcionario WHERE numero_cracha = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setLong(1, id);
+            stmt.setLong(1, numeroCracha);
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -92,6 +84,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         }
     }
 
+
+//    LISTAR TODOS OS FUNCIONARIOS
     @Override
     public List<Funcionario> findAll() {
         List<Funcionario> funcionarios = new ArrayList<>();
@@ -103,7 +97,6 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
             while (rs.next()) {
                 Funcionario funcionario = new Funcionario();
-                funcionario.setId(rs.getLong("id"));
                 funcionario.setNumeroCracha(rs.getString("numero_cracha"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setSobrenome(rs.getString("sobrenome"));
@@ -123,19 +116,22 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         return funcionarios;
     }
 
+
+
+//    BUSCAR FUNCIONARIO PELO ID
     @Override
-    public Optional<Funcionario> findById(Long id) {
+    public Optional<Funcionario> findById(Long numeroCracha) {
         Funcionario funcionario = null;
-        String sql = "SELECT * FROM funcionario WHERE id = ?";
+        String sql = "SELECT * FROM funcionario WHERE numero_cracha = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setLong(1, id);
+            stmt.setLong(1, numeroCracha);
+
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     funcionario = new Funcionario();
-                    funcionario.setId(rs.getLong("id"));
                     funcionario.setNumeroCracha(rs.getString("numero_cracha"));
                     funcionario.setNome(rs.getString("nome"));
                     funcionario.setSobrenome(rs.getString("sobrenome"));

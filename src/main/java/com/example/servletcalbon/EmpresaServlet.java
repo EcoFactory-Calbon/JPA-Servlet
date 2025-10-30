@@ -27,7 +27,7 @@ public class EmpresaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // PARÂMETROS DO FORMULÁRIO
+//        PARAMETROS DO FORMULARIO
         String nome = request.getParameter("nome_empresa");
         String cnpj = request.getParameter("cnpj");
         String categoria = request.getParameter("cat_empresa");
@@ -40,7 +40,7 @@ public class EmpresaServlet extends HttpServlet {
         CategoriaEmpresa categoriaEmpresa = new CategoriaEmpresa(null, categoria, descricao);
         Localizacao localizacao = new Localizacao(null, estado, cidade);
         Porte porteObj = new Porte(porte);
-        Empresa empresa = new Empresa(nome, cnpj, null); // senha será definida depois
+        Empresa empresa = new Empresa(nome, cnpj, null);
 
         // CONEXÃO E DAOs
         Connection connection = ConnectionFactory.getConnection();
