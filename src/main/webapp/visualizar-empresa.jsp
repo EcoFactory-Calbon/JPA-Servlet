@@ -9,6 +9,7 @@
 <%@ page import="com.example.servletcalbon.modelFuncionario.Localizacao" %>
 <%@ page import="com.example.servletcalbon.modelEmpresa.CategoriaEmpresa" %>
 <%@ page import="com.example.servletcalbon.modelEmpresa.Porte" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 

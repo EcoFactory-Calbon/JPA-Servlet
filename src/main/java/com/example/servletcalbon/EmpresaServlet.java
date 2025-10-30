@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 @WebServlet("/empresaServlet")
 public class EmpresaServlet extends HttpServlet {
@@ -61,8 +62,11 @@ public class EmpresaServlet extends HttpServlet {
         // SALVA EMPRESA (sem senha por enquanto)
         empresaDAO.save(empresa);
 
-        // GUARDA O CNPJ NA SESSÃO PRA USAR DEPOIS NO SenhaServlet
-        request.getSession().setAttribute("cnpjEmpresa", cnpj);
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         // REDIRECIONA PARA A PÁGINA DE CRIAR SENHA
         RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");

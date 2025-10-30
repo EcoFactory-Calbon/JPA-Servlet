@@ -21,7 +21,7 @@ public class ConnectionFactory {
                     .ignoreIfMissing() // não lança exceção se não encontrar
                     .load();
         } catch (Exception e) {
-            // fallback: Dotenv não encontrado, vamos usar variáveis de ambiente do sistema
+            e.getMessage();
             return null;
         }
     }
