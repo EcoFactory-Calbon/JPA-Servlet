@@ -73,6 +73,7 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         return localizacao;
     }
 
+//    METODO PARA DELETAR UMA LOCALIZACAO
     @Override
     public void delete(Long id) {
         String sql = "DELETE FROM localizacao WHERE id = ?";
@@ -80,7 +81,9 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         try {
             connection = ConnectionFactory.getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+//                Define o id gerado do registro a ser deletado
                 ps.setLong(1, id);
+//                Executa o DELETE
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
