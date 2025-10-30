@@ -4,6 +4,7 @@ import com.example.servletcalbon.dao.*;
 import com.example.servletcalbon.infra.ConnectionFactory;
 import com.example.servletcalbon.modelFuncionario.Funcionario;
 import com.example.servletcalbon.modelFuncionario.Localizacao;
+import com.example.servletcalbon.modelFuncionario.Cargo;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,32 +23,56 @@ public class FuncionarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        PARAMETROS DO FORMULARIO
+//        PARAMETROS DO FORMULÁRIO
+        String numeroCracha = request.getParameter("numero_cracha");
         String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
         String email = request.getParameter("email");
-        String campo = request.getParameter("campo");
-        String empresa = request.getParameter("empresa");
-        String cargo = request.getParameter("cargo");
-        String telefone = request.getParameter("telefone");
-        String cidade = request.getParameter("cidade");
+        String senha = request.getParameter("senha");
+        boolean isGestor = request.getParameter("is_gestor") != null;
+        String nomeCargo = request.getParameter("cargo");
         String estado = request.getParameter("estado");
+        String cidade = request.getParameter("cidade");
 
 //        CRIA OBJETOS
-        Funcionario funcionario = new Funcionario(null, nome, email, campo, empresa, telefone, cidade, estado);
+        Cargo cargoObj = new Cargo(nomeCargo);
         Localizacao localizacao = new Localizacao(null, estado, cidade);
-        Cargo cargo = new Cargo(cargo);
 
-//        CONEXAO DAOs
+        Funcionario funcionario = new Funcionario();
+        funcionario.setNumeroCracha(numeroCracha);
+        funcionario.setNome(nome);
+        funcionario.setSobrenome(sobrenome);
+        funcionario.setEmail(email);
+        funcionario.setSenha(senha);
+        funcionario.setGestor(isGestor);
+
+//        CONEXÃO E DAOs
         Connection connection = ConnectionFactory.getConnection();
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
-        LocalizacaoDAO localizacaoDAO = new LocalizacaoDAO(connection);
         CargoDAO cargoDAO = new CargoDAO(connection);
-        EmpresaDAO empresaDAO = new EmpresaDAO(connection);
+        LocalizacaoDAO localizacaoDAO = new LocalizacaoDAO(connection);
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
+        EmpresaDAO empresaDAO = new EmpresaDAO(connection); // opcional
 
-        // SALVA FUNCONARIO, LOCALIZAÇÃO E CARGO
-        funcionario = funcionario.save(funcionario);
+//        SALVA LOCALIZAÇÃO E CARGO
+        cargoObj = cargoDAO.save(cargoObj);
         localizacao = localizacaoDAO.save(localizacao);
-        cargo = cargoDAO.save(cargo);
 
+//        ATRIBUI OS IDs AO FUNCIONÁRIO
+        funcionario.setIdCargo(cargoObj.getId());
+        funcionario.setIdLocalizacao(localizacao.getId());
+
+//        SALVA FUNCIONÁRIO
+        funcionarioDAO.save(funcionario);
+
+//        FECHA CONEXÃO
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+//        REDIRECIONA PARA A PÁGINA DE SUCESSO
+        RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
+        dispatcher.forward(request, response);
     }
 }
