@@ -93,6 +93,9 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         }
     }
 
+
+
+//    METODO PARA LISTAR TODAS AS LOCALIZACOES
     @Override
     public List<Localizacao> findAll() {
         List<Localizacao> localizacoes = new ArrayList<>();
@@ -100,14 +103,17 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         Connection connection = null;
         try {
             connection = ConnectionFactory.getConnection();
+            //        Executa o comando SeELECT  e percorre o resultSet
             try (PreparedStatement ps = connection.prepareStatement(sql);
                  ResultSet rs = ps.executeQuery()) {
+//                Para cada linha, cria um novo objeto localizacao
                 while (rs.next()) {
                     Localizacao l = new Localizacao(
                             rs.getLong("id"),
                             rs.getString("estado"),
                             rs.getString("cidade")
                     );
+//                    Adiciona lista
                     localizacoes.add(l);
                 }
             }
@@ -118,6 +124,8 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         }
         return localizacoes;
     }
+
+
 
     @Override
     public Optional<Localizacao> findById(Long id) {
