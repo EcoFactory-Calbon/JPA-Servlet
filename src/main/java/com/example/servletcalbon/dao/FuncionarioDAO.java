@@ -11,12 +11,16 @@ import java.util.Optional;
 
 public class FuncionarioDAO implements IFuncionarioDAO {
 
+//    CONSTRUTOR SEM CONEXAO EXTERNA
     public FuncionarioDAO(Connection connection) {
     }
 
+//    CONSTRUTOR PADRAO
     public FuncionarioDAO() {
     }
 
+
+//    METODO SPARA INSERIR UM FUNCIONARIO
     @Override
     public Funcionario save(Funcionario funcionario) {
         String sql = "INSERT INTO funcionario (numero_cracha, nome, sobrenome, email, senha, is_gestor, id_cargo, id_localizacao) " +
@@ -25,6 +29,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         try {
             connection = ConnectionFactory.getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+//                Define os valores dos parametros
                 ps.setString(1, funcionario.getNumeroCracha());
                 ps.setString(2, funcionario.getNome());
                 ps.setString(3, funcionario.getSobrenome());
@@ -33,6 +39,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
                 ps.setBoolean(6, funcionario.isGestor());
                 ps.setLong(7, funcionario.getIdCargo());
                 ps.setLong(8, funcionario.getIdLocalizacao());
+
+//                Executa o comando SQL
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -42,6 +50,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         }
         return funcionario;
     }
+
+
 
     @Override
     public Funcionario update(Funcionario funcionario) {
