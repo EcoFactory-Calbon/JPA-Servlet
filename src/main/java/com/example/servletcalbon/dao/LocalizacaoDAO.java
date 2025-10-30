@@ -127,6 +127,7 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
 
 
 
+//    BUSCA UMA LOCALIZACAO ESPECIFICA NO BD
     @Override
     public Optional<Localizacao> findById(Long id) {
         Localizacao localizacao = null;
@@ -137,6 +138,8 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setLong(1, id);
                 ResultSet rs = ps.executeQuery();
+
+//                Se existir resultado, instancia o objeto Localizacao
                 if (rs.next()) {
                     localizacao = new Localizacao(
                             rs.getLong("id"),
@@ -150,6 +153,7 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         } finally {
             ConnectionFactory.fechar(connection);
         }
+//        Retorna o objeto dentro de um Optional
         return Optional.ofNullable(localizacao);
     }
 }
