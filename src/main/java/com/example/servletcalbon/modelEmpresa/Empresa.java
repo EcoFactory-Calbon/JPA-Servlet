@@ -1,6 +1,6 @@
 package com.example.servletcalbon.modelEmpresa;
-
 public class Empresa {
+//    ATRIBUTOS
     private int id;
     private String cnpj;
     private String nome;
@@ -9,6 +9,7 @@ public class Empresa {
     private String senha;
     private int idPorte;
 
+//    CONSTRUTOR
     public Empresa() {}
 
     public Empresa(String nome, String cnpj, String senha) {
@@ -17,28 +18,25 @@ public class Empresa {
         this.senha = senha;
     }
 
-    // Getters e Setters
+//    GETTERS E SETTERS
     public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
     public String getCnpj() { return cnpj; }
-    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
-
     public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-
     public int getIdLocalizacao() { return idLocalizacao; }
-    public void setIdLocalizacao(int idLocalizacao) { this.idLocalizacao = idLocalizacao; }
-
     public int getIdCategoria() { return idCategoria; }
-    public void setIdCategoria(int idCategoria) { this.idCategoria = idCategoria; }
-
     public String getSenha() { return senha; }
-    public void setSenha(String senha) { this.senha = senha; }
-
     public int getIdPorte() { return idPorte; }
+
+    public void setId(int id) { this.id = id; }
+    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
+    public void setNome(String nome) { this.nome = nome; }
+    public void setIdLocalizacao(int idLocalizacao) { this.idLocalizacao = idLocalizacao; }
+    public void setIdCategoria(int idCategoria) { this.idCategoria = idCategoria; }
+    public void setSenha(String senha) { this.senha = senha; }
     public void setIdPorte(int idPorte) { this.idPorte = idPorte; }
 
+
+//    TO STRING
     @Override
     public String toString() {
         return "Empresa{" +

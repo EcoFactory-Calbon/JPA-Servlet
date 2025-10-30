@@ -3,7 +3,6 @@ package com.example.servletcalbon;
 import com.example.servletcalbon.dao.EmpresaDAO;
 import com.example.servletcalbon.infra.ConnectionFactory;
 import com.example.servletcalbon.modelEmpresa.Empresa;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,19 +11,23 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.List;
+import java.util.Optional;
 
-@WebServlet("/ListaServlet")
-public class ListaServlet extends HttpServlet {
+@WebServlet ("/senhaServlet")
+public class SenhaServlet  extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Connection connection = ConnectionFactory.getConnection();
-        EmpresaDAO dao =  new EmpresaDAO(connection);
-        List<Empresa> empresas = dao.findAll();
+        String cnpj = (String) request.getSession().getAttribute("cnpjEmpresa");
+        String senha = request.getParameter("senha");
 
-        request.setAttribute("empresa", empresas);
+        EmpresaDAO dao = new EmpresaDAO(ConnectionFactory.getConnection());
+        Optional<Empresa> optionalEmpresa = dao.findById(cnpj);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/empresa.jsp");
-        dispatcher.forward(request, response);
+        if (optionalEmpresa.isPresent()) {
+            Empresa empresa = optionalEmpresa.get();
+            empresa.setSenha(senha);
+            dao.update(empresa);
+        }
+
+        response.sendRedirect("inicio.jsp");
     }
-
 }

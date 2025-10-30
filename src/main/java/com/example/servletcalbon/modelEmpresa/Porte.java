@@ -1,9 +1,12 @@
 package com.example.servletcalbon.modelEmpresa;
 
 public class Porte {
+
+//    ATRIBUTOS
     private int id;
     private String nome;
 
+//    CONSTRUTOR
     public Porte(int id, String nome) {
         this.id = id;
         this.nome = nome;
@@ -13,12 +16,14 @@ public class Porte {
         this.nome = nome;
     }
 
+//    GETTERS E SETTERS
     public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
     public String getNome() { return nome; }
+
+    public void setId(int id) { this.id = id; }
     public void setNome(String nome) { this.nome = nome; }
 
+//    TOSTRING
     @Override
     public String toString() {
         return "Porte{" +

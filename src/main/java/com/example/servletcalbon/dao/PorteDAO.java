@@ -77,7 +77,7 @@ public class PorteDAO {
         return Optional.empty();
     }
 
-    // 🟡 ATUALIZAR
+//    ATUALIZAR
     public Porte update(Porte porte) {
         String sql = "UPDATE porte SET nome = ? WHERE id = ?";
         Connection connection = null;
@@ -98,7 +98,7 @@ public class PorteDAO {
         return porte;
     }
 
-    // 🔴 DELETAR
+//    DELETAR
     public void delete(int id) {
         String sql = "DELETE FROM porte WHERE id = ?";
         Connection connection = null;
@@ -116,7 +116,7 @@ public class PorteDAO {
         }
     }
 
-    // 🔵 LISTAR TODOS
+//    LISTAR TODOS
     public List<Porte> findAll() {
         List<Porte> portes = new ArrayList<>();
         String sql = "SELECT * FROM porte";
@@ -144,7 +144,7 @@ public class PorteDAO {
         return portes;
     }
 
-    // 🔍 BUSCAR POR ID
+//    BUSCAR ID
     public Optional<Porte> findById(int id) {
         Porte porte = null;
         String sql = "SELECT * FROM porte WHERE id = ?";

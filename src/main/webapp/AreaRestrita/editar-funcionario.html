@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editar Funcionário | Painel Administrativo</title>
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/editar.css" />
+  <link rel="stylesheet" href="css/inserir.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" href="img/icone-logo.ico" type="image/icon" />
+</head>
+
+<body>
+  <!---------------------------------------------------- BARRA LATERAL  -------------------------------------------------------->
+  <aside class="sidebar">
+    <ul>
+      <a href="/inicio.jsp" class="sidebar-item active">
+        <i class="fas fa-home icon-img"></i> Início
+        <span class="label">Início</span>
+      </a>
+
+      <a href="../visualizar-empresa.jsp" class="sidebar-item">
+        <i class="fa-solid fa-building"></i>Empresas
+        <span class="label">Visualizar</span>
+      </a>
+
+      <a href="visualizar-funcionario.html" class="sidebar-item">
+        <i class="fa-solid fa-people-group"></i> Funcionários
+        <span class="label">Visualizar</span>
+      </a>
+
+      <a href="inserir.html" class="sidebar-item">
+        <i class="fas fa-plus icon-img"></i> Inserir
+        <span class="label">Inserir</span>
+      </a>
+
+      <a href="editar.html" class="sidebar-item">
+        <i class="fa fa-pen icon-img"></i> Editar
+        <span class="label">Editar</span>
+      </a>
+
+    </ul>
+    <hr class="divisao-aside">
+    <a href="../index.html" class="sidebar-item">
+      <i class="fas fa-right-from-bracket icon-img"></i>
+    </a>
+
+  </aside>
+
+  <!------------------------------------------------------------ MAIN - FORMULÁRIO DE EDIÇÃO --------------------------------------------------------------->
+  <main>
+    <!-- Card do formulário -->
+    <section class="formulario-funcionario">
+      <div class="cabecalho">
+
+        <div class="titulo">
+          <i class="fas fa-user-edit icone-titulo"></i>
+          <h1>Editar Funcionário</h1>
+        </div>
+        <a class="fechar" href="../inicio.jsp"> <i class="fas fa-times"></i></a>
+      </div>
+
+      <form class="formulario" id="formEditarFuncionario">
+        <input type="hidden" id="funcionario_id" name="funcionario_id" />
+
+        <div class="grid-campos">
+          <div class="campo">
+            <label for="nome" class="label">Nome Completo <span class="obrigatorio">*</span></label>
+            <div class="input-container">
+              <i class="fas fa-user icone-campo"></i>
+              <input type="text" id="nome" name="nome" class="input" required aria-required="true"
+                placeholder="Selecione o nome do funcionário a ser editado" list="listaFuncionarios" />
+            </div>
+            <div class="mensagem-erro" id="erro-nome"></div>
+          </div>
+
+          <datalist id="listaFuncionarios">
+            <option value="Ana Silva"></option>
+            <option value="Bruno Santos"></option>
+            <option value="Carlos Oliveira"></option>
+            <option value="Diana Pereira"></option>
+            <option value="Eduardo Costa"></option>
+            <option value="Fernanda Lima"></option>
+          </datalist>
+
+          <!-- Campo Cargo -->
+          <!-- Campo Cargo convertido em datalist -->
+          <div class="campo">
+            <label for="cargo" class="label">Cargo</label>
+            <div class="input-container">
+              <i class="fas fa-briefcase icone-campo"></i>
+              <input type="text" id="cargo" name="cargo" class="input" list="opcoesCargo"
+                placeholder="Selecione o cargo" required>
+            </div>
+            <datalist id="opcoesCargo">
+              <option value="Gerente">
+              <option value="Desenvolvedor">
+              <option value="Analista">
+              <option value="Analista de Dados">
+              <option value="Desenvolvedor Front-End">
+              <option value="Gestor de Projetos">
+              <option value="Analista de RH">
+              <option value="Administrador de Redes">
+              <option value="Coordenador de TI">
+              <option value="Analista de Segurança">
+              <option value="UX Designer">
+              <option value="Engenheiro de Software">
+              <option value="QA Tester">
+              <option value="Product Owner">
+              <option value="Scrum Master">
+              <option value="Designer Gráfico">
+              <option value="DevOps Engineer">
+            </datalist>
+          </div>
+
+          <!-- Campo E-mail -->
+          <div class="campo">
+            <label for="email" class="label">E-mail <span class="obrigatorio">*</span></label>
+            <div class="input-container">
+              <i class="fas fa-envelope icone-campo"></i>
+              <input type="email" id="email" name="email" class="input" required aria-required="true"
+                placeholder="Digite o e-mail" />
+            </div>
+            <div class="mensagem-erro" id="erro-email"></div>
+          </div>
+
+          <!-- Campo Telefone -->
+          <div class="campo">
+            <label for="telefone" class="label">Telefone</label>
+            <div class="input-container">
+              <i class="fas fa-phone icone-campo"></i>
+              <input type="tel" id="telefone" name="telefone" class="input" placeholder="(11) 99999-9999" />
+            </div>
+            <div class="mensagem-erro" id="erro-telefone"></div>
+          </div>
+
+          <!-- Campo Empresa convertido em datalist -->
+          <div class="campo">
+            <label for="empresa" class="label">Empresa</label>
+            <div class="input-container">
+              <i class="fas fa-building icone-campo"></i>
+              <input type="text" id="empresa" name="empresa" class="input" list="opcoesEmpresa"
+                placeholder="Selecione a empresa" required>
+            </div>
+            <datalist id="opcoesEmpresa">
+              <option value="Calbon Tecnologia">
+              <option value="Verde Sustentável">
+              <option value="Tech Solutions">
+              <option value="Digital Innovation">
+            </datalist>
+          </div>
+
+          <!-- Campo Senha -->
+          <div class="campo">
+            <label for="senha_hash" class="label">Nova Senha</label>
+            <div class="input-container">
+              <i class="fas fa-lock icone-campo"></i>
+              <input type="password" id="senha_hash" name="senha_hash" class="input"
+                placeholder="Deixe em branco para manter a senha atual" />
+            </div>
+            <div class="mensagem-erro" id="erro-senha_hash"></div>
+          </div>
+        </div>
+
+        <div class="botoes-acao">
+          <button type="button" class="botao-cancelar" onclick="window.location.href='inserir.html'">
+            <i class="fas fa-times"></i>Cancelar
+          </button>
+
+          <button type="submit" class="botao-salvar" id="botaoSalvar">
+            <i class="fas fa-save"></i>
+            <span class="texto-botao">Salvar Alterações</span>
+          </button>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden">
+    <img id="toastIcon" src="" alt="">
+    <span id="toastMsg"></span>
+  </div>
+
+  <!------------------------------------------------------- SCRIPT --------------------------------------------------------------------------->
+  <script src="js/toast.js"></script>
+  <script src="js/sidebar-navigation.js"></script>
+</body>
+
+</html>

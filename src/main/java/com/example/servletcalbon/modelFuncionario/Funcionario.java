@@ -1,8 +1,8 @@
 package com.example.servletcalbon.modelFuncionario;
 
 import java.util.Objects;
-
 public class Funcionario {
+//    ATRIBUTOS
     private Long id;
     private String numeroCracha;
     private String nome;
@@ -16,6 +16,7 @@ public class Funcionario {
     public Funcionario() {
     }
 
+//    CONSTRUTOR
     public Funcionario(Long id, String numeroCracha, String nome, String sobrenome, String email, String senha,
                        boolean isGestor, Long idCargo, Long idLocalizacao) {
         this.id = id;
@@ -41,80 +42,64 @@ public class Funcionario {
         this.idLocalizacao = idLocalizacao;
     }
 
-    // Getters e Setters
+//    GETTERS E SETTERS
     public Long getId() {
         return id;
+    }
+    public String getNumeroCracha() {
+        return numeroCracha;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public String getSobrenome() {
+        return sobrenome;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getSenha() {
+        return senha;
+    }
+    public Long getIdCargo() {
+        return idCargo;
+    }
+    public Long getIdLocalizacao() {
+        return idLocalizacao;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getNumeroCracha() {
-        return numeroCracha;
-    }
-
     public void setNumeroCracha(String numeroCracha) {
         this.numeroCracha = numeroCracha;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getSenha() {
-        return senha;
-    }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
     public boolean isGestor() {
         return isGestor;
     }
-
     public void setGestor(boolean gestor) {
         isGestor = gestor;
     }
-
-    public Long getIdCargo() {
-        return idCargo;
-    }
-
     public void setIdCargo(Long idCargo) {
         this.idCargo = idCargo;
     }
-
-    public Long getIdLocalizacao() {
-        return idLocalizacao;
-    }
-
     public void setIdLocalizacao(Long idLocalizacao) {
         this.idLocalizacao = idLocalizacao;
     }
 
-    // toString
+//    TOSTRING
     @Override
     public String toString() {
         return "Funcionario{" +
@@ -130,7 +115,7 @@ public class Funcionario {
                 '}';
     }
 
-    // equals e hashCode
+//    EQUALS E HASHCODE
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

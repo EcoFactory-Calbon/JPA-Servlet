@@ -7,6 +7,8 @@
 <%@ page import="com.example.servletcalbon.infra.ConnectionFactory" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.sql.Connection" %>
+<%@ page import="com.example.servletcalbon.dao.PorteDAO" %>
+<%@ page import="com.example.servletcalbon.modelEmpresa.Porte" %>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -37,19 +39,21 @@
         <th>ESTADO</th>
         <th>CATEGORIA</th>
         <th>SENHA</th>
-        <th>ID_PORTE</th>
+        <th>PORTE</th>
     </tr>
     <%
         Connection connection = ConnectionFactory.getConnection();
         EmpresaDAO empresaDAO = new EmpresaDAO(connection);
         LocalizacaoDAO localizacaoDAO = new LocalizacaoDAO(connection);
         CategoriaEmpresaDAO categoriaDAO = new CategoriaEmpresaDAO(connection);
+        PorteDAO porteDAO = new PorteDAO(connection);
 
         List<Empresa> empresas = empresaDAO.findAll();
 
         for (Empresa empresa : empresas) {
             Localizacao loc = localizacaoDAO.findById((long)empresa.getIdLocalizacao()).orElse(null);
             CategoriaEmpresa cat = categoriaDAO.findById((long)empresa.getIdCategoria()).orElse(null);
+            Porte porte = porteDAO.findById(Math.toIntExact((long) empresa.getIdPorte())).orElse(null);
     %>
     <tr>
         <td><%= empresa.getId() %></td>
@@ -59,7 +63,7 @@
         <td><%= loc != null ? loc.getEstado() : "N/D" %></td>
         <td><%= cat != null ? cat.getNome() : "N/D" %></td>
         <td><%= empresa.getSenha() %></td>
-        <td><%= empresa.getIdPorte() %></td>
+        <td><%= porte != null ? porte.getNome() : "N/D" %></td>
     </tr>
     <%
         }

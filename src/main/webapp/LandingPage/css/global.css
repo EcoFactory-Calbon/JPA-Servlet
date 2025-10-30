@@ -1,0 +1,273 @@
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    padding: 0 20px;
+    
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    background-color: #06204547; 
+    backdrop-filter: blur(10px);
+    
+    border-radius: 50px;
+    z-index: 100;
+
+    width: auto; 
+}
+
+.lista-header {
+    position: static;
+    transform: none;
+}
+
+.lista-header ul {
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-header ul li {
+    position: relative;
+}
+
+.lista-header li:hover {
+    color: #3f9ac4;
+
+}
+
+.lista-header li {
+    text-decoration: none;
+    text-align: center;
+    padding: 3px;
+    cursor: pointer;
+    font-size: smaller;
+    transition: background-color 0.3s, border-radius 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Estilo dos links do menu */
+nav.lista-header ul li a {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Linha sublinhada */
+nav.lista-header ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(107, 178, 208);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+nav.lista-header ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Responsividade do*/
+@media (max-width: 768px) {
+    .logoheader {
+        margin-left: 0;
+    }
+}
+
+/*---------------------------------------------- LOGIN - HEADER -------------------------------------------*/
+.button-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.button-header button {
+    font-family: inherit;
+    padding: 0.3rem;
+    border-radius: 25px;
+    cursor: pointer;/* border: none; */
+}
+
+.button-header img {
+    cursor: pointer;
+}
+
+.button-header div:hover {
+    width: 20px;
+    border-radius: 50px;
+    background-color: #267fa8a4;
+}
+
+.entrar {
+    text-align: center;
+    margin-right: 0;
+    background: linear-gradient(90deg, #0da5cf, #007bff) ;
+    color: #040912;
+    width: 100px;
+    padding: 6px 15px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.3s;
+}
+
+.entrar:hover {
+    transform: scale(1.05);
+}
+
+.logoheader {
+    margin-left: 20px;
+}
+
+.header-list li {
+    cursor: pointer;
+}
+
+#perfil {
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#perfil:hover {
+    transform: scale(1.1);
+    border-color: var(--destaque);
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.6);
+}
+/* /-------------------------------------------------- FOOTER ---------------------------------------------------/ */
+.footer {
+  background-color: #010817;
+  color: #fff;
+  padding: 60px 20px 20px;
+  margin-top: 80px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-logo {
+  width: 40px;
+  margin-bottom: 15px;
+}
+
+.footer-col h4 {
+  color: var(--destaque);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.footer-col p {
+  color: #bbb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.footer-col a {
+  top: 10px;
+  text-decoration: none;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.footer-col ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--destaque);
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 12px;
+  transition: transform 0.3s;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #777;
+  border-top: 1px solid #2a2a2a;
+  padding-top: 15px;
+  margin-top: 30px;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    width: 50px;  
+    height: 50px; 
+  }
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  header{
+    width: 550px;
+  }
+  .lista-header ul {
+    display:flex;
+  }
+  .button-header {
+    display: flex;
+  }
+
+}
+
+
+

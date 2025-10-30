@@ -26,48 +26,46 @@ public class EmpresaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Parâmetros do formulário
-        String nome = request.getParameter("nome");
+        // PARÂMETROS DO FORMULÁRIO
+        String nome = request.getParameter("nome_empresa");
         String cnpj = request.getParameter("cnpj");
-        String senha = request.getParameter("senha");
-
-        String categoria = request.getParameter("categoria");
+        String categoria = request.getParameter("cat_empresa");
         String descricao = request.getParameter("descricao");
-        String porte = request.getParameter("porte");
+        String porte = request.getParameter("porteEmpresa");
         String estado = request.getParameter("estado");
         String cidade = request.getParameter("cidade");
 
-        // Cria os objetos
+        // CRIA OBJETOS
         CategoriaEmpresa categoriaEmpresa = new CategoriaEmpresa(null, categoria, descricao);
         Localizacao localizacao = new Localizacao(null, estado, cidade);
         Porte porteObj = new Porte(porte);
-        Empresa empresa = new Empresa(nome, cnpj, senha);
+        Empresa empresa = new Empresa(nome, cnpj, null); // senha será definida depois
 
-        // Conexão única compartilhada entre DAOs
+        // CONEXÃO E DAOs
         Connection connection = ConnectionFactory.getConnection();
-
         CategoriaEmpresaDAO categoriaDAO = new CategoriaEmpresaDAO(connection);
         LocalizacaoDAO localizacaoDAO = new LocalizacaoDAO(connection);
         PorteDAO porteDAO = new PorteDAO(connection);
         EmpresaDAO empresaDAO = new EmpresaDAO(connection);
 
-        // Salva em ordem
+        // SALVA CATEGORIA, LOCALIZAÇÃO E PORTE
         categoriaEmpresa = categoriaDAO.save(categoriaEmpresa);
         localizacao = localizacaoDAO.save(localizacao);
         porteObj = porteDAO.save(porteObj);
 
-        // Atribui os IDs corretos à empresa
+        // ATRIBUI OS IDs À EMPRESA
         empresa.setIdCategoria(Math.toIntExact(categoriaEmpresa.getId()));
         empresa.setIdLocalizacao(Math.toIntExact(localizacao.getId()));
         empresa.setIdPorte(porteObj.getId());
 
-        // Salva empresa
+        // SALVA EMPRESA (sem senha por enquanto)
         empresaDAO.save(empresa);
 
-        //comentario teste
+        // GUARDA O CNPJ NA SESSÃO PRA USAR DEPOIS NO SenhaServlet
+        request.getSession().setAttribute("cnpjEmpresa", cnpj);
 
-        // Redireciona
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/empresa.jsp");
+        // REDIRECIONA PARA A PÁGINA DE CRIAR SENHA
+        RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
         dispatcher.forward(request, response);
     }
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Acesse sua conta</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="shortcut icon" href="assets/icone-logo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img class="logoheader" width="30" src="assets/icone-logo.png" alt="icone-logo">
+        <nav class="lista-header">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+        </nav>
+        <div class="button-header">
+            <a href="cadastro.html" class="entrar">Cadastrar Empresa</a>
+        </div>
+    </header>
+
+    <section class="login">
+        <div class="login-card">
+            <h2 class="titulo">Entrar</h2>
+
+            <form class="login-form" action="#" method="POST">
+                <div class="input-group">
+                    <label for="nome_empresa">Nome da Empresa</label>
+                    <input type="text" id="nome_empresa" name="nome_empresa" placeholder="Digite o nome da sua empresa" required>
+                </div>
+                <div class="input-group">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0001-00" required>
+                </div>
+                <div class="input-group">
+                    <label for="cnpj">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                </div>
+                <a class="entrar-crud" href="inicio.html">Entrar</a>
+            </form>
+            <div class="divider">OU</div>
+            <p class="cadastro">Não possui cadastro?
+                <a href="cadastro.html" class="cadastro-link">Cadastrar</a>
+            </p>
+        </div>
+    </section>
+    <footer class="rodape">
+        <p class="copyright">&copy; 2025 Calbon</p>
+        <a href="/politica-de-privacidade" class="link-termo">Privacidade e termos</a>
+    </footer>
+    <script src="regex.js" defer></script>
+</body>
+
+</html>

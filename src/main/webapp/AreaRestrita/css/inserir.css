@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/*--------------------------------------------------- MAIN - LAYOUT -----------------------------------------*/
+main {
+  margin-left: 260px;
+  padding: 84px 32px 32px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #07101c 0%, #0a1421 100%);
+}
+
+a {
+  text-decoration: none;
+}
+
+/*--------------------------------------------------- ÁREA DE MENSAGENS -----------------------------------------*/
+.formulario-empresa {
+  background: #0F1E32;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #1a2a3a;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+
+/*--------------------------------------------------- CABEÇALHO DO FORMULÁRIO -----------------------------------------*/
+.cabecalho {
+  background: linear-gradient(135deg, #1a3558, #2a4a6b);
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #2b2b36;
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icone-titulo {
+  font-size: 24px;
+  color: #1cd5ea;
+}
+
+.titulo h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.fechar {
+  background: none;
+  border: none;
+  color: #8d9aa6;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fechar:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+/*--------------------------------------------------- CARD DO FORMULÁRIO -----------------------------------------*/
+.formulario-funcionario {
+  background: #0F1E32;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #1a2a3a;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/*--------------------------------------------------- FORMULÁRIO -----------------------------------------*/
+.formulario {
+  padding: 32px;
+}
+
+.grid-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.campo-full {
+  grid-column: 1 / -1;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.obrigatorio {
+  color: #ff4757;
+  font-weight: 700;
+}
+
+/*--------------------------------------------------- CONTAINER DE INPUT -----------------------------------------*/
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icone-campo {
+  position: absolute;
+  left: 16px;
+  color: #6b7280;
+  font-size: 16px;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+option {
+  color: #0b1c31;
+  background-color: #e3f7ff;
+}
+
+/*--------------------------------------------------- BOTÕES DE AÇÃO -----------------------------------------*/
+.botoes-acao {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  padding-top: 24px;
+  border-top: 1px solid #374151;
+}
+
+.botao-salvar, .botao-cancelar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.botao-salvar {
+  background: linear-gradient(135deg, #1cd5ea, #3651ff);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(28, 213, 234, 0.3);
+}
+
+.botao-salvar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(28, 213, 234, 0.4);
+}
+
+.botao-cancelar {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 2px solid #374151;
+}
+
+.botao-cancelar:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #4b5563;
+  transform: translateY(-2px);
+}
+
+.texto-botao {
+  transition: all 0.3s ease;
+}
+
+/*--------------------------------------------------- BOTÕES PRINCIPAIS DE INSERÇÃO -----------------------------------------*/
+.area-botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 60px 0;
+  background: #0F1E32;
+}
+
+.botao-inserir {
+  background: linear-gradient(135deg, #24a7b6, #4151be);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.botao-inserir:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(28, 169, 234, 0.4);
+}
+
+
+/* ===== INPUTS COM ÍCONES ===== */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-container .icone-campo {
+  position: absolute;
+  left: 14px;
+  color: #6b7a8f;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 20px 20px 15px 50px;
+  background: #15263a;
+  border: 1px solid #1c2b3a;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input, .select::placeholder {
+  color: #6c7a8f;
+}
+
+/* ===== EFEITO AO FOCAR ===== */
+.input:focus {
+  border-color: #00baff;
+  box-shadow: 0 0 8px rgba(0, 186, 255, 0.4);
+}
+
+/*--------------------------------------------------- ANIMAÇÕES -----------------------------------------*/

@@ -9,13 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 public class FuncionarioDAO implements IFuncionarioDAO {
 
+//    METODO PARA INSERIR UM NOVO FUNCIONÁRIO NO BANCO
     @Override
     public Funcionario save(Funcionario funcionario) {
+//        SQL PARA INSERIR UM NOVO FUNCIONARIO
         String sql = "INSERT INTO funcionario (numero_cracha, nome, sobrenome, email, senha, is_gestor, id_cargo, id_localizacao) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
+//        GARANTE QUE A CONEXÃO  E O STATEMENT SEJAM FECHADOS
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -28,15 +32,17 @@ public class FuncionarioDAO implements IFuncionarioDAO {
             stmt.setLong(7, funcionario.getIdCargo());
             stmt.setLong(8, funcionario.getIdLocalizacao());
 
+//            EXECUTA INSERT
             stmt.executeUpdate();
 
-            // Recupera o ID gerado
+//            RECUPERA O ID GERADO
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
                     funcionario.setId(rs.getLong(1));
                 }
             }
 
+//            RECUPERA O ID GERADO AUTOMATICAMENTE PELO BD
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao salvar funcionário: " + e.getMessage(), e);
         }
