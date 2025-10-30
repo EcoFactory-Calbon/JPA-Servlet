@@ -20,13 +20,15 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
 
     }
 
-//    METODO PARA SALVAR UM NOVO FUNCIONARIO NO BANCO
+//    METODO PARA SALVAR UMA NOVA LOCALIZACAO NO BANCO
     @Override
     public Localizacao save(Localizacao localizacao) {
         String sql = "INSERT INTO localizacao (estado, cidade) VALUES (?, ?)";
         Connection connection = null;
         try {
             connection = ConnectionFactory.getConnection();
+
+//            Prepara a query para inserir e retornar um id gerado
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, localizacao.getEstado());
                 ps.setString(2, localizacao.getCidade());
@@ -40,21 +42,27 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         } finally {
+//            Fecha conexao com bd
             ConnectionFactory.fechar(connection);
         }
         return localizacao;
     }
 
+
+//    METODO PARA ATUALIZAR A LOCALIZAO EXISTENTE NO BD
     @Override
     public Localizacao update(Localizacao localizacao) {
         String sql = "UPDATE localizacao SET estado = ?, cidade = ? WHERE id = ?";
         Connection connection = null;
         try {
+//            Abre a conexao
             connection = ConnectionFactory.getConnection();
+//            Prepara a query para execução
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, localizacao.getEstado());
                 ps.setString(2, localizacao.getCidade());
                 ps.setLong(3, localizacao.getId());
+//                Executa o comando SQL
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
