@@ -56,7 +56,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 
 
-    // MÉTODO PARA ATUALIZAR UM FUNCIONÁRIO
+//    METODO PARA ATUALIZAR UM FUNCIONARIO
     @Override
     public Funcionario update(Funcionario funcionario) {
         String sql = "UPDATE funcionario SET nome = ?, sobrenome = ?, email = ?, senha = ?, " +
@@ -66,7 +66,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         try {
             connection = ConnectionFactory.getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                // Define os parâmetros
+//                Define os parametros
                 ps.setString(1, funcionario.getNome());
                 ps.setString(2, funcionario.getSobrenome());
                 ps.setString(3, funcionario.getEmail());
@@ -76,17 +76,20 @@ public class FuncionarioDAO implements IFuncionarioDAO {
                 ps.setLong(7, funcionario.getIdLocalizacao());
                 ps.setString(8, funcionario.getNumeroCracha());
 
-                // Executa o UPDATE
+//                Executa o UPDATE
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao atualizar funcionário: " + ex.getMessage(), ex);
         } finally {
-            // Fecha a conexão
+//            Fecha conexao
             ConnectionFactory.fechar(connection);
         }
         return funcionario;
     }
+
+
+
 
     // MÉTODO PARA DELETAR UM FUNCIONÁRIO
     @Override
