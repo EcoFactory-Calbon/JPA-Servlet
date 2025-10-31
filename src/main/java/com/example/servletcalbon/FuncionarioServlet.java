@@ -62,7 +62,7 @@ public class FuncionarioServlet extends HttpServlet {
 
 
 
-//        ATRIBUI OS IDs À FUNCIONARIOS
+//        ATRIBUI OS IDs À FUNCIONARIO
         funcionario.setIdCargo((long) Math.toIntExact(cargo.getId()));
         funcionario.setIdLocalizacao((long) Math.toIntExact(localizacao.getId()));
 
