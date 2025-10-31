@@ -36,11 +36,13 @@ public class FuncionarioServlet extends HttpServlet {
         String estado = request.getParameter("estado");
         String cidade = request.getParameter("cidade");
 
-        // CRIA OBJETOS
-     Funcionario funcionario = new Funcionario(null,nome, email,empresa,cargoNome, telefone, null, null);
-     Localizacao localizacao = new Localizacao(null, estado, cidade);
-     Setor setor = new Setor(nome, null);
-     Cargo cargo = new Cargo(null, nome, null);
+
+
+//        CRIA OBJETOS
+        Funcionario funcionario = new Funcionario(null,nome, email,empresa,cargoNome, telefone, null, null);
+        Localizacao localizacao = new Localizacao(null, estado, cidade);
+        Setor setor = new Setor(nome, null);
+        Cargo cargo = new Cargo(null, nome, null);
 
 
 
