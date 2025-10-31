@@ -11,19 +11,24 @@ import java.util.Optional;
 
 public class LocalizacaoDAO implements ILocalizacaoDAO {
 
+//    CONSTRUTOR SEM CONEXAO EXTERNA
     public LocalizacaoDAO(Connection connection) {
     }
 
+//    CONSTRUTOR PADRÃO
     public LocalizacaoDAO() {
 
     }
 
+//    METODO PARA SALVAR UMA NOVA LOCALIZACAO NO BANCO
     @Override
     public Localizacao save(Localizacao localizacao) {
         String sql = "INSERT INTO localizacao (estado, cidade) VALUES (?, ?)";
         Connection connection = null;
         try {
             connection = ConnectionFactory.getConnection();
+
+//            Prepara a query para inserir e retornar um id gerado
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, localizacao.getEstado());
                 ps.setString(2, localizacao.getCidade());
@@ -37,21 +42,27 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         } finally {
+//            Fecha conexao com bd
             ConnectionFactory.fechar(connection);
         }
         return localizacao;
     }
 
+
+//    METODO PARA ATUALIZAR A LOCALIZAO EXISTENTE NO BD
     @Override
     public Localizacao update(Localizacao localizacao) {
         String sql = "UPDATE localizacao SET estado = ?, cidade = ? WHERE id = ?";
         Connection connection = null;
         try {
+//            Abre a conexao
             connection = ConnectionFactory.getConnection();
+//            Prepara a query para execução
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, localizacao.getEstado());
                 ps.setString(2, localizacao.getCidade());
                 ps.setLong(3, localizacao.getId());
+//                Executa o comando SQL
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -62,6 +73,7 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         return localizacao;
     }
 
+//    METODO PARA DELETAR UMA LOCALIZACAO
     @Override
     public void delete(Long id) {
         String sql = "DELETE FROM localizacao WHERE id = ?";
@@ -69,7 +81,9 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         try {
             connection = ConnectionFactory.getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+//                Define o id gerado do registro a ser deletado
                 ps.setLong(1, id);
+//                Executa o DELETE
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -79,6 +93,9 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         }
     }
 
+
+
+//    METODO PARA LISTAR TODAS AS LOCALIZACOES
     @Override
     public List<Localizacao> findAll() {
         List<Localizacao> localizacoes = new ArrayList<>();
@@ -86,14 +103,17 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         Connection connection = null;
         try {
             connection = ConnectionFactory.getConnection();
+            //        Executa o comando SeELECT  e percorre o resultSet
             try (PreparedStatement ps = connection.prepareStatement(sql);
                  ResultSet rs = ps.executeQuery()) {
+//                Para cada linha, cria um novo objeto localizacao
                 while (rs.next()) {
                     Localizacao l = new Localizacao(
                             rs.getLong("id"),
                             rs.getString("estado"),
                             rs.getString("cidade")
                     );
+//                    Adiciona lista
                     localizacoes.add(l);
                 }
             }
@@ -105,6 +125,9 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         return localizacoes;
     }
 
+
+
+//    BUSCA UMA LOCALIZACAO ESPECIFICA NO BD
     @Override
     public Optional<Localizacao> findById(Long id) {
         Localizacao localizacao = null;
@@ -115,6 +138,8 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setLong(1, id);
                 ResultSet rs = ps.executeQuery();
+
+//                Se existir resultado, instancia o objeto Localizacao
                 if (rs.next()) {
                     localizacao = new Localizacao(
                             rs.getLong("id"),
@@ -128,6 +153,7 @@ public class LocalizacaoDAO implements ILocalizacaoDAO {
         } finally {
             ConnectionFactory.fechar(connection);
         }
+//        Retorna o objeto dentro de um Optional
         return Optional.ofNullable(localizacao);
     }
 }

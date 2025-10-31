@@ -107,9 +107,26 @@
             </tbody>
         </table>
     </div>
-</main>
-
-<script src="AreaRestrita/js/sidebar-navigation.js"></script>
-<script src="AreaRestrita/js/modal-confirmacao.js"></script>
+    <!-- Modal de confirmação de exclusão -->
+    <div id="modalConfirmacao" class="modal hidden">
+        <div class="modal-conteudo">
+            <div class="modal-header">
+            <h3>Confirmar Exclusão</h3>
+            <button class="botao-fechar-modal" onclick="fecharModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        </div>
+        </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir esta empresa?</p>
+                <p class="texto-destaque">Esta ação não pode ser desfeita.</p>
+            </div> <div class="modal-footer">
+                <button class="botao-cancelar-modal" onclick="fecharModal()">Cancelar</button>
+                <button class="botao-confirmar-exclusao">Excluir</button>
+            </div>
+</main> <script src="AreaRestrita/js/sidebar-navigation.js">
+</script> <script src="AreaRestrita/js/modal-confirmacao.js">
+</script>
 </body>
 </html>
