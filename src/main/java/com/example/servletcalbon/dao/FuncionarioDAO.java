@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class FuncionarioDAO implements IFuncionarioDAO {
 
-//    CONSTRUTOR SEM CONEXAO EXTERNA
+//    CONSTRUTOR COM CONEXAO EXTERNA
     public FuncionarioDAO(Connection connection) {
     }
 
@@ -19,13 +19,13 @@ public class FuncionarioDAO implements IFuncionarioDAO {
     public FuncionarioDAO() {
     }
 
-
-//    METODO SPARA INSERIR UM FUNCIONARIO
+//    METODO PARA INSERIR UM FUNCIONARIO
     @Override
     public Funcionario save(Funcionario funcionario) {
         String sql = "INSERT INTO funcionario (numero_cracha, nome, sobrenome, email, senha, is_gestor, id_cargo, id_localizacao) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = null;
+
         try {
             connection = ConnectionFactory.getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -40,7 +40,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
                 ps.setLong(7, funcionario.getIdCargo());
                 ps.setLong(8, funcionario.getIdLocalizacao());
 
-//                Executa o comando SQL
+//                Executa o comando
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -56,17 +56,17 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 
 
-//    METODO PARA ATUALIZAR UM FUNCIONARIO
-@Override
+    // MÉTODO PARA ATUALIZAR UM FUNCIONÁRIO
+    @Override
     public Funcionario update(Funcionario funcionario) {
         String sql = "UPDATE funcionario SET nome = ?, sobrenome = ?, email = ?, senha = ?, " +
                 "is_gestor = ?, id_cargo = ?, id_localizacao = ? WHERE numero_cracha = ?";
         Connection connection = null;
+
         try {
             connection = ConnectionFactory.getConnection();
-
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-//                Define os parametros
+                // Define os parâmetros
                 ps.setString(1, funcionario.getNome());
                 ps.setString(2, funcionario.getSobrenome());
                 ps.setString(3, funcionario.getEmail());
@@ -75,50 +75,39 @@ public class FuncionarioDAO implements IFuncionarioDAO {
                 ps.setLong(6, funcionario.getIdCargo());
                 ps.setLong(7, funcionario.getIdLocalizacao());
                 ps.setString(8, funcionario.getNumeroCracha());
-//                Executa o UPDATE
+
+                // Executa o UPDATE
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao atualizar funcionário: " + ex.getMessage(), ex);
         } finally {
-//            Fecha conexao
+            // Fecha a conexão
             ConnectionFactory.fechar(connection);
         }
         return funcionario;
     }
 
-
-
-
-
-
-//    METODO PARA DELETAR UM FUNCIONARIO
+    // MÉTODO PARA DELETAR UM FUNCIONÁRIO
     @Override
     public void delete(Long numeroCracha) {
         String sql = "DELETE FROM funcionario WHERE numero_cracha = ?";
         Connection connection = null;
+
         try {
             connection = ConnectionFactory.getConnection();
-//            Prepara o comando SQL
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setLong(1, numeroCracha);
-//                Executa o DELETE
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao excluir funcionário: " + ex.getMessage(), ex);
         } finally {
-//            Fecha conexao
             ConnectionFactory.fechar(connection);
         }
     }
 
-
-
-
-
-
-//    LISTA TODOS OS FUNCIONARIO
+    // MÉTODO PARA LISTAR TODOS OS FUNCIONÁRIOS
     @Override
     public List<Funcionario> findAll() {
         List<Funcionario> funcionarios = new ArrayList<>();
@@ -130,9 +119,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
             try (PreparedStatement ps = connection.prepareStatement(sql);
                  ResultSet rs = ps.executeQuery()) {
 
-//                O ResultSet percorre linha por linhaos registros do bd
+                // Percorre os resultados
                 while (rs.next()) {
-//                    Cria um novo objeto Funcioanrio com os dados
                     Funcionario f = new Funcionario(
                             rs.getString("numero_cracha"),
                             rs.getString("nome"),
@@ -143,59 +131,50 @@ public class FuncionarioDAO implements IFuncionarioDAO {
                             rs.getLong("id_cargo"),
                             rs.getLong("id_localizacao")
                     );
-//                    Adiciona funcionario a lista
                     funcionarios.add(f);
                 }
-
             }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao listar funcionários: " + ex.getMessage(), ex);
         } finally {
-//            Fecha conexao
             ConnectionFactory.fechar(connection);
         }
 
         return funcionarios;
     }
 
-
-
-
-
-//    MÉTODOPARA BUSCAR UM FUNCIONARIO EM ESPECIFICO
+    // MÉTODO PARA BUSCAR UM FUNCIONÁRIO ESPECÍFICO PELO NÚMERO DO CRACHÁ
     @Override
     public Optional<Funcionario> findById(Long numeroCracha) {
         Funcionario funcionario = null;
         String sql = "SELECT * FROM funcionario WHERE numero_cracha = ?";
         Connection connection = null;
+
         try {
             connection = ConnectionFactory.getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-//                Executa a consulta e obtem os resultados
                 ps.setLong(1, numeroCracha);
                 ResultSet rs = ps.executeQuery();
 
-//                Se o funcionario existir, cria o objeto e preenche com os dados
                 if (rs.next()) {
-                    funcionario  = new Funcionario(
-                    rs.getString("numero_cracha"),
-                    rs.getString("nome"),
-                    rs.getString("sobrenome"),
-                    rs.getString("email"),
-                    rs.getString("senha"),
-                    rs.getBoolean("is_gestor"),
-                    rs.getLong("id_cargo"),
-                    rs.getLong("id_localizacao")
+                    funcionario = new Funcionario(
+                            rs.getString("numero_cracha"),
+                            rs.getString("nome"),
+                            rs.getString("sobrenome"),
+                            rs.getString("email"),
+                            rs.getString("senha"),
+                            rs.getBoolean("is_gestor"),
+                            rs.getLong("id_cargo"),
+                            rs.getLong("id_localizacao")
                     );
                 }
             }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao buscar funcionário: " + ex.getMessage(), ex);
         } finally {
-//            Fecha conexao
             ConnectionFactory.fechar(connection);
         }
-//        Retorna o resultado dentro de um Optional
+
         return Optional.ofNullable(funcionario);
     }
 }
