@@ -55,8 +55,7 @@ public class FuncionarioServlet extends HttpServlet {
 
 
 
-
-//        SALVA SETOR, LOCALIZAÇÃO E CARGO
+//        SALVA SETOR LOCALIZACAO E CARGO
         setor = setorDAO.save(setor);
         localizacao = localizacaoDAO.save(localizacao);
         cargo = cargoDAO.save(cargo);
