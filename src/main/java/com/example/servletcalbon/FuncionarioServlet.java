@@ -1,6 +1,8 @@
 package com.example.servletcalbon;
 
-import com.example.servletcalbon.dao.*;
+import com.example.servletcalbon.dao.CargoDAO;
+import com.example.servletcalbon.dao.FuncionarioDAO;
+import com.example.servletcalbon.dao.LocalizacaoDAO;
 import com.example.servletcalbon.infra.ConnectionFactory;
 import com.example.servletcalbon.modelFuncionario.Funcionario;
 import com.example.servletcalbon.modelFuncionario.Localizacao;
@@ -23,55 +25,52 @@ public class FuncionarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        PARAMETROS DO FORMULÁRIO
-        String numeroCracha = request.getParameter("numero_cracha");
+        // PARÂMETROS DO FORMULÁRIO
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        boolean isGestor = request.getParameter("is_gestor") != null;
-        String nomeCargo = request.getParameter("cargo");
+        String cargoNome = request.getParameter("cargo");
         String estado = request.getParameter("estado");
         String cidade = request.getParameter("cidade");
 
-//        CRIA OBJETOS
-        Cargo cargoObj = new Cargo(nomeCargo);
+        // CRIA OBJETOS
+        Cargo cargo = new Cargo(cargoNome, IdSetor);
+        cargo.setNome(cargoNome);
+        cargo.setIdSetor(1); // ajustar conforme seu banco
+
         Localizacao localizacao = new Localizacao(null, estado, cidade);
 
         Funcionario funcionario = new Funcionario();
-        funcionario.setNumeroCracha(numeroCracha);
         funcionario.setNome(nome);
         funcionario.setSobrenome(sobrenome);
         funcionario.setEmail(email);
         funcionario.setSenha(senha);
-        funcionario.setGestor(isGestor);
 
-//        CONEXÃO E DAOs
+        // CONEXÃO E DAOs
         Connection connection = ConnectionFactory.getConnection();
-        CargoDAO cargoDAO = new CargoDAO(connection);
-        LocalizacaoDAO localizacaoDAO = new LocalizacaoDAO(connection);
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
-        EmpresaDAO empresaDAO = new EmpresaDAO(connection); // opcional
+        CargoDAO cargoDAO = new CargoDAO();
+        LocalizacaoDAO localizacaoDAO = new LocalizacaoDAO();
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
-//        SALVA LOCALIZAÇÃO E CARGO
-        cargoObj = cargoDAO.save(cargoObj);
+        // SALVA CARGO E LOCALIZAÇÃO
+        cargo = cargoDAO.save(cargo);
         localizacao = localizacaoDAO.save(localizacao);
 
-//        ATRIBUI OS IDs AO FUNCIONÁRIO
-        funcionario.setIdCargo(cargoObj.getId());
+        // ATRIBUI OS IDs AO FUNCIONÁRIO
+        funcionario.setIdCargo(cargo.getId());
         funcionario.setIdLocalizacao(localizacao.getId());
 
-//        SALVA FUNCIONÁRIO
+        // SALVA FUNCIONÁRIO
         funcionarioDAO.save(funcionario);
 
-//        FECHA CONEXÃO
         try {
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-//        REDIRECIONA PARA A PÁGINA DE SUCESSO
+        // REDIRECIONA PARA A PÁGINA INICIAL
         RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
         dispatcher.forward(request, response);
     }
