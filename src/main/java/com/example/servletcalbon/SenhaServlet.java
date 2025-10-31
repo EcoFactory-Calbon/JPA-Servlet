@@ -19,14 +19,6 @@ public class SenhaServlet  extends HttpServlet {
         String cnpj = (String) request.getSession().getAttribute("cnpjEmpresa");
         String senha = request.getParameter("senha");
 
-        EmpresaDAO dao = new EmpresaDAO(ConnectionFactory.getConnection());
-        Optional<Empresa> optionalEmpresa = dao.findById(cnpj);
-
-        if (optionalEmpresa.isPresent()) {
-            Empresa empresa = optionalEmpresa.get();
-            empresa.setSenha(senha);
-            dao.update(empresa);
-        }
 
         response.sendRedirect("inicio.jsp");
     }
