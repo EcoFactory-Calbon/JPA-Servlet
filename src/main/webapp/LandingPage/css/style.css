@@ -226,7 +226,7 @@ body {
 /*----------------------------------------- NOSSO APP -----------------------------------------------------*/
 .nosso-app {
   padding: 80px 0;
-  background-image: url('../assets/Fundo2.png');
+  background-image: url('../assets/fundo2.png');
   min-height: 600px;
   position: relative;
 }
