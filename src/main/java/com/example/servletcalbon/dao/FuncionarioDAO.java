@@ -91,7 +91,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 
 
-    // MÉTODO PARA DELETAR UM FUNCIONÁRIO
+//    METODO DELETAR FUNCIONARIO
     @Override
     public void delete(Long numeroCracha) {
         String sql = "DELETE FROM funcionario WHERE numero_cracha = ?";
@@ -99,6 +99,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
         try {
             connection = ConnectionFactory.getConnection();
+//            Prepara o comando SQL
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setLong(1, numeroCracha);
                 ps.executeUpdate();
@@ -106,9 +107,15 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao excluir funcionário: " + ex.getMessage(), ex);
         } finally {
+//            Fecha conexao
             ConnectionFactory.fechar(connection);
         }
     }
+
+
+
+
+
 
     // MÉTODO PARA LISTAR TODOS OS FUNCIONÁRIOS
     @Override
