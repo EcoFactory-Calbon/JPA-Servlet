@@ -156,7 +156,11 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         return funcionarios;
     }
 
-    // MÉTODO PARA BUSCAR UM FUNCIONÁRIO ESPECÍFICO PELO NÚMERO DO CRACHÁ
+
+
+
+
+//    METODO PARA BUSCAR UM FUNCIONARIO EM ESPECIFICO
     @Override
     public Optional<Funcionario> findById(Long numeroCracha) {
         Funcionario funcionario = null;
@@ -166,9 +170,11 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         try {
             connection = ConnectionFactory.getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+//                Executa a consulta e obtem os resultados
                 ps.setLong(1, numeroCracha);
                 ResultSet rs = ps.executeQuery();
 
+//                Se o funcionario existir, cria o objeto e preenche com os dados
                 if (rs.next()) {
                     funcionario = new Funcionario(
                             rs.getString("numero_cracha"),
@@ -185,9 +191,11 @@ public class FuncionarioDAO implements IFuncionarioDAO {
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao buscar funcionário: " + ex.getMessage(), ex);
         } finally {
+//            Fecha conexao
             ConnectionFactory.fechar(connection);
         }
 
+//        Retorna o resultado dentro de um Optional
         return Optional.ofNullable(funcionario);
     }
 }
