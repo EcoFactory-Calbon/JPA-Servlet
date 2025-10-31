@@ -46,12 +46,15 @@ public class FuncionarioServlet extends HttpServlet {
 
 
 
-//     CONEXAO E DAOs
+//        CONEXAO E DAOs
         Connection connection = ConnectionFactory.getConnection();
         LocalizacaoDAO localizacaoDAO = new LocalizacaoDAO(connection);
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
         SetorDAO setorDAO = new SetorDAO(connection);
         CargoDAO cargoDAO = new CargoDAO(connection);
+
+
+
 
 //        SALVA SETOR, LOCALIZAÇÃO E CARGO
         setor = setorDAO.save(setor);
