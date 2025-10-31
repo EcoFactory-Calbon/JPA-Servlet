@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class SetorDAO {
 
-    public SetorDAO() {
+    public SetorDAO(Connection connection) {
     }
 
     // SALVAR (verifica se já existe pelo nome)

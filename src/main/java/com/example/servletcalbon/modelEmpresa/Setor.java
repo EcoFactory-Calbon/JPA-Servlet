@@ -8,7 +8,7 @@ public class Setor {
     private int idEmpresa;
 
     // CONSTRUTORES
-    public Setor() {
+    public Setor(String nome, Integer o) {
     }
 
     public Setor(int id, String nome, int idEmpresa) {

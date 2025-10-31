@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class CargoDAO {
 
-    public CargoDAO() {
+    public CargoDAO(Connection connection) {
     }
 
     // 🔹 SALVAR (verifica se já existe pelo nome)

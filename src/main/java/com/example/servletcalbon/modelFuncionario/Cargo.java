@@ -8,7 +8,7 @@ public class Cargo {
     private int idSetor;
 
     //    CONSTRUTORES
-    public Cargo(int id, String nome, int idSetor) {
+    public Cargo(Integer id, String nome, Object idSetor) {
         this.id = id;
         this.nome = nome;
         this.idSetor = idSetor;
