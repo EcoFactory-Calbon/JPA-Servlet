@@ -1,296 +1,269 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inserir Empresa | Painel Administrativo</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/inserir.css" />
-  <link rel="icon" href="img/icone-logo.ico" type="image/icon" />
+    <meta charset="UTF-8">
+    <meta charset="PT-BR" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserir Empresa | Painel Administrativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/inserir.css" />
+    <link rel="icon" href="img/icone-logo.ico" type="image/icon" />
 </head>
 
 <body>
-
-  <aside class="sidebar">
+<aside class="sidebar">
     <ul>
-      <a href="../inicio.jsp" class="sidebar-item active">
-        <i class="fas fa-home icon-img"></i> Início
-        <span class="label">Início</span>
-      </a>
-      <a href="../visualizar-empresa.jsp" class="sidebar-item">
-        <i class="fa-solid fa-building"></i>Empresas
-      </a>
-      <a href="visualizar-funcionario.html" class="sidebar-item">
-        <i class="fa-solid fa-people-group"></i>Funcionários
-      </a>
-      <a href="inserir.html" class="sidebar-item">
-        <i class="fas fa-plus icon-img"></i> Inserir
-      </a>
-      <a href="editar.html" class="sidebar-item">
-        <i class="fa fa-pen icon-img"></i> Editar
-      </a>
+        <a href="../inicio.jsp" class="sidebar-item active">
+            <i class="fas fa-home icon-img"></i> Início
+            <span class="label">Início</span>
+        </a>
+        <a href="../visualizar-empresa.jsp" class="sidebar-item">
+            <i class="fa-solid fa-building"></i>Empresas
+        </a>
+        <a href="visualizar-funcionario.html" class="sidebar-item">
+            <i class="fa-solid fa-people-group"></i>Funcionários
+        </a>
+        <a href="inserir.html" class="sidebar-item">
+            <i class="fas fa-plus icon-img"></i> Inserir
+        </a>
+        <a href="editar.html" class="sidebar-item">
+            <i class="fa fa-pen icon-img"></i> Editar
+        </a>
     </ul>
 
     <hr class="divisao-aside">
     <a href="../index.html" class="sidebar-item">
-      <i class="fas fa-right-from-bracket icon-img"></i>
+        <i class="fas fa-right-from-bracket icon-img"></i>
     </a>
-  </aside>
+</aside>
 
-  <main>
+<main>
     <section class="formulario-empresa">
-      <div class="cabecalho">
-        <div class="titulo">
-          <i class="fas fa-building icone-titulo"></i>
-          <h1>Inserir Empresa</h1>
+        <div class="cabecalho">
+            <div class="titulo">
+                <i class="fas fa-building icone-titulo"></i>
+                <h1>Inserir Empresa</h1>
+            </div>
+            <a class="fechar" href="inserir.html"><i class="fas fa-times"></i></a>
         </div>
-        <a class="fechar" href="inserir.html"><i class="fas fa-times"></i></a>
-      </div>
 
-      <form class="formulario" id="formInserirEmpresa">
-        <div class="grid-campos">
+        <form class="formulario" id="formInserirEmpresa" action="../empresaServlet" method="post">
+            <div class="grid-campos">
 
-          <div class="campo">
-            <label for="nomeEmpresa" class="label">Nome da Empresa</label>
-            <div class="input-container">
-              <i class="fas fa-building icone-campo"></i>
-              <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input"
-                placeholder="Digite o nome da sua empresa" required>
+                <div class="campo">
+                    <label for="nome_empresa" class="label">Nome da Empresa</label>
+                    <div class="input-container">
+                        <i class="fas fa-building icone-campo"></i>
+                        <input type="text" id="nome_empresa" name="nome_empresa" class="input"
+                               placeholder="Digite o nome da sua empresa" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="categoriaEmpresa" class="label">Categoria da Empresa</label>
+                    <div class="input-container">
+                        <i class="fas fa-tags icone-campo"></i>
+                        <input type="text" id="categoriaEmpresa" name="cat_empresa" class="input"
+                               placeholder="Selecione a categoria" list="opcoesCategoria" required>
+                    </div>
+                    <datalist id="opcoesCategoria">
+                        <option value="Agricultura">
+                        <option value="Pecuária">
+                        <option value="Pesca">
+                        <option value="Silvicultura">
+                        <option value="Exploração Florestal">
+                        <option value="Mineração">
+                        <option value="Indústria de Alimentos e Bebidas">
+                        <option value="Indústria Têxtil e de Vestuário">
+                        <option value="Indústria Química e Petroquímica">
+                        <option value="Indústria Automotiva">
+                        <option value="Indústria de Construção Civil">
+                        <option value="Indústria Metalúrgica e Mecânica">
+                        <option value="Indústria de Móveis">
+                        <option value="Indústria de Plásticos">
+                        <option value="Indústria de Eletrônicos e Informática">
+                        <option value="Indústria Farmacêutica">
+                        <option value="Indústria de Papel e Celulose">
+                        <option value="Indústria Naval e Aeronáutica">
+                        <option value="Indústria Gráfica">
+                        <option value="Comércio Varejista">
+                        <option value="Comércio Atacadista">
+                        <option value="E-commerce">
+                        <option value="Serviços Financeiros e Bancários">
+                        <option value="Seguros e Previdência">
+                        <option value="Consultoria Empresarial">
+                        <option value="Consultoria Ambiental">
+                        <option value="Serviços Contábeis e Auditoria">
+                        <option value="Serviços Jurídicos e Advocacia">
+                        <option value="Serviços de Marketing e Publicidade">
+                        <option value="Serviços de Recursos Humanos">
+                        <option value="Serviços de Limpeza e Conservação">
+                        <option value="Serviços de Segurança Privada">
+                        <option value="Serviços de Tecnologia da Informação (TI)">
+                        <option value="Desenvolvimento de Software">
+                        <option value="Desenvolvimento de Aplicativos Móveis">
+                        <option value="Hospedagem de Sites e Cloud Computing">
+                        <option value="Manutenção de Equipamentos de Informática">
+                        <option value="Design Gráfico e UX/UI">
+                        <option value="Produção Audiovisual e Multimídia">
+                        <option value="Serviços de Impressão 3D">
+                        <option value="Educação Infantil">
+                        <option value="Ensino Fundamental e Médio">
+                        <option value="Ensino Técnico e Profissionalizante">
+                        <option value="Ensino Superior e Universidades">
+                        <option value="Cursos e Treinamentos Livres">
+                        <option value="Saúde e Medicina">
+                        <option value="Odontologia">
+                        <option value="Fisioterapia e Reabilitação">
+                        <option value="Psicologia e Terapias">
+                        <option value="Serviços de Enfermagem e Cuidados Domiciliares">
+                        <option value="Farmácias e Drogarias">
+                        <option value="Hospitais e Clínicas">
+                        <option value="Serviços Veterinários">
+                        <option value="Artes, Cultura e Entretenimento">
+                        <option value="Mídia, Rádio e Televisão">
+                        <option value="Eventos e Produções Culturais">
+                        <option value="Transporte Rodoviário de Cargas">
+                        <option value="Transporte Coletivo e Passageiros">
+                        <option value="Transporte Aéreo e Marítimo">
+                        <option value="Armazenagem e Logística Integrada">
+                        <option value="Correios e Entregas">
+                        <option value="Infraestrutura e Energia">
+                        <option value="Engenharia e Arquitetura">
+                        <option value="Construção e Reformas">
+                        <option value="Imobiliário e Corretagem">
+                        <option value="Energias Renováveis">
+                        <option value="Energia Solar">
+                        <option value="Energia Eólica">
+                        <option value="Gestão de Resíduos">
+                        <option value="Reciclagem e Sustentabilidade">
+                        <option value="Consultoria Ambiental">
+                        <option value="Monitoramento Ambiental">
+                        <option value="Projetos de Compensação de CO₂">
+                        <option value="Agência de Publicidade e Propaganda">
+                        <option value="Produção de Conteúdo Digital">
+                        <option value="Influenciadores e Mídias Sociais">
+                        <option value="Assessoria de Imprensa">
+                        <option value="Turismo e Viagens">
+                        <option value="Hotelaria">
+                        <option value="Restaurantes e Alimentação">
+                        <option value="Buffets e Eventos">
+                        <option value="Bares e Cafeterias">
+                        <option value="Moda e Confecção">
+                        <option value="Calçados e Acessórios">
+                        <option value="Cosméticos e Perfumaria">
+                        <option value="Salões de Beleza e Estética">
+                        <option value="Barbearias">
+                        <option value="Academias e Personal Trainers">
+                        <option value="Clubes e Associações Esportivas">
+                        <option value="Artigos Esportivos">
+                        <option value="Eventos Esportivos">
+                        <option value="Organizações Não Governamentais (ONGs)">
+                        <option value="Instituições Públicas">
+                        <option value="Cooperativas">
+                        <option value="Associações e Sindicatos">
+                        <option value="Startups e Inovação">
+                        <option value="Empresas de Impacto Social">
+                        <option value="Empresas de Capital Aberto (S/A)">
+                    </datalist>
+                </div>
+
+                <div class="campo">
+                    <label for="porteEmpresa" class="label">Porte da Empresa</label>
+                    <div class="input-container">
+                        <i class="fas fa-chart-line icone-campo"></i>
+                        <input type="text" id="porteEmpresa" name="porteEmpresa" class="input"
+                               placeholder="Selecione o porte da empresa" list="opcoesPorte" required>
+                    </div>
+                    <datalist id="opcoesPorte">
+                        <option value="MEI - Microempreendedor Individual">
+                        <option value="Microempresa (ME)">
+                        <option value="Empresa de Pequeno Porte (EPP)">
+                        <option value="Média Empresa">
+                        <option value="Média-Grande Empresa">
+                        <option value="Grande Empresa">
+                        <option value="Empresa de Capital Aberto (S/A)">
+                        <option value="Multinacional">
+                        <option value="Startup">
+                        <option value="Empresa Familiar">
+                        <option value="Cooperativa">
+                        <option value="ONG / Organização Sem Fins Lucrativos">
+                        <option value="Instituição Pública">
+                        <option value="Empresa de Economia Mista">
+                        <option value="Holding / Grupo Empresarial">
+                    </datalist>
+                </div>
+
+                <div class="campo">
+                    <label for="cnpj" class="label">CNPJ</label>
+                    <div class="input-container">
+                        <i class="fas fa-id-card icone-campo"></i>
+                        <input type="text" id="cnpj" name="cnpj" class="input" placeholder="00.000.000/0001-00" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="estado" class="label">Estado</label>
+                    <div class="input-container">
+                        <i class="fas fa-map-marker-alt icone-campo"></i>
+                        <input type="text" id="estado" name="estado" class="input" placeholder="Selecione o estado"
+                               list="opcoesEstado" required>
+                    </div>
+                    <datalist id="opcoesEstado">
+                        <option value="AC - Acre">
+                        <option value="AL - Alagoas">
+                        <option value="AP - Amapá">
+                        <option value="AM - Amazonas">
+                        <option value="BA - Bahia">
+                        <option value="CE - Ceará">
+                        <option value="DF - Distrito Federal">
+                        <option value="ES - Espírito Santo">
+                        <option value="GO - Goiás">
+                        <option value="MA - Maranhão">
+                        <option value="MT - Mato Grosso">
+                        <option value="MS - Mato Grosso do Sul">
+                        <option value="MG - Minas Gerais">
+                        <option value="PA - Pará">
+                        <option value="PB - Paraíba">
+                        <option value="PR - Paraná">
+                        <option value="PE - Pernambuco">
+                        <option value="PI - Piauí">
+                        <option value="RJ - Rio de Janeiro">
+                        <option value="RN - Rio Grande do Norte">
+                        <option value="RS - Rio Grande do Sul">
+                        <option value="RO - Rondônia">
+                        <option value="RR - Roraima">
+                        <option value="SC - Santa Catarina">
+                        <option value="SP - São Paulo">
+                        <option value="SE - Sergipe">
+                        <option value="TO - Tocantins">
+                    </datalist>
+                </div>
+
+                <div class="campo">
+                    <label for="cidade" class="label">Cidade</label>
+                    <div class="input-container">
+                        <i class="fas fa-city icone-campo"></i>
+                        <input type="text" id="cidade" name="cidade" class="input" placeholder="Informe a cidade" required>
+                    </div>
+                </div>
             </div>
-          </div>
 
-          <div class="campo">
-            <label for="categoriaEmpresa" class="label">Categoria da Empresa</label>
-            <div class="input-container">
-              <i class="fas fa-tags icone-campo"></i>
-              <input type="text" id="categoriaEmpresa" name="categoriaEmpresa" class="input"
-                placeholder="Escolha uma das categorias abaixo" list="opcoesCategoria" required>
+            <div class="botoes-acao">
+                <button type="button" class="botao-cancelar" onclick="window.location.href='inserir.html'">
+                    <i class="fas fa-times"></i>Cancelar
+                </button>
+
+                <button type="submit" class="botao-salvar" id="botaoSalvar">
+                    <i class="fas fa-save"></i>
+                    <span class="texto-botao">Salvar Alterações</span>
+                </button>
             </div>
-            <datalist id="opcoesCategoria">
-              <option value="Agricultura">
-              <option value="Pecuária">
-              <option value="Pesca">
-              <option value="Silvicultura">
-              <option value="Exploração Florestal">
-              <option value="Mineração">
-
-                <!-- Setor Secundário -->
-              <option value="Indústria de Alimentos e Bebidas">
-              <option value="Indústria Têxtil e de Vestuário">
-              <option value="Indústria Química e Petroquímica">
-              <option value="Indústria Automotiva">
-              <option value="Indústria de Construção Civil">
-              <option value="Indústria Metalúrgica e Mecânica">
-              <option value="Indústria de Móveis">
-              <option value="Indústria de Plásticos">
-              <option value="Indústria de Eletrônicos e Informática">
-              <option value="Indústria Farmacêutica">
-              <option value="Indústria de Papel e Celulose">
-              <option value="Indústria Naval e Aeronáutica">
-              <option value="Indústria Gráfica">
-
-                <!-- Setor Terciário (Serviços e Comércio) -->
-              <option value="Comércio Varejista">
-              <option value="Comércio Atacadista">
-              <option value="E-commerce">
-              <option value="Serviços Financeiros e Bancários">
-              <option value="Seguros e Previdência">
-              <option value="Consultoria Empresarial">
-              <option value="Consultoria Ambiental">
-              <option value="Serviços Contábeis e Auditoria">
-              <option value="Serviços Jurídicos e Advocacia">
-              <option value="Serviços de Marketing e Publicidade">
-              <option value="Serviços de Recursos Humanos">
-              <option value="Serviços de Limpeza e Conservação">
-              <option value="Serviços de Segurança Privada">
-              <option value="Serviços de Tecnologia da Informação (TI)">
-              <option value="Desenvolvimento de Software">
-              <option value="Desenvolvimento de Aplicativos Móveis">
-              <option value="Hospedagem de Sites e Cloud Computing">
-              <option value="Manutenção de Equipamentos de Informática">
-              <option value="Design Gráfico e UX/UI">
-              <option value="Produção Audiovisual e Multimídia">
-              <option value="Serviços de Impressão 3D">
-
-                <!-- Educação, Saúde e Cultura -->
-              <option value="Educação Infantil">
-              <option value="Ensino Fundamental e Médio">
-              <option value="Ensino Técnico e Profissionalizante">
-              <option value="Ensino Superior e Universidades">
-              <option value="Cursos e Treinamentos Livres">
-              <option value="Saúde e Medicina">
-              <option value="Odontologia">
-              <option value="Fisioterapia e Reabilitação">
-              <option value="Psicologia e Terapias">
-              <option value="Serviços de Enfermagem e Cuidados Domiciliares">
-              <option value="Farmácias e Drogarias">
-              <option value="Hospitais e Clínicas">
-              <option value="Serviços Veterinários">
-              <option value="Artes, Cultura e Entretenimento">
-              <option value="Mídia, Rádio e Televisão">
-              <option value="Eventos e Produções Culturais">
-
-                <!-- Infraestrutura e Logística -->
-              <option value="Transporte Rodoviário de Cargas">
-              <option value="Transporte Coletivo e Passageiros">
-              <option value="Transporte Aéreo e Marítimo">
-              <option value="Armazenagem e Logística Integrada">
-              <option value="Correios e Entregas">
-              <option value="Infraestrutura e Energia">
-              <option value="Engenharia e Arquitetura">
-              <option value="Construção e Reformas">
-              <option value="Imobiliário e Corretagem">
-
-                <!-- Energia e Meio Ambiente -->
-              <option value="Energias Renováveis">
-              <option value="Energia Solar">
-              <option value="Energia Eólica">
-              <option value="Gestão de Resíduos">
-              <option value="Reciclagem e Sustentabilidade">
-              <option value="Consultoria Ambiental">
-              <option value="Monitoramento Ambiental">
-              <option value="Projetos de Compensação de CO₂">
-
-                <!-- Comunicação e Mídia -->
-              <option value="Agência de Publicidade e Propaganda">
-              <option value="Produção de Conteúdo Digital">
-              <option value="Influenciadores e Mídias Sociais">
-              <option value="Assessoria de Imprensa">
-
-                <!-- Turismo e Hospitalidade -->
-              <option value="Turismo e Viagens">
-              <option value="Hotelaria">
-              <option value="Restaurantes e Alimentação">
-              <option value="Buffets e Eventos">
-              <option value="Bares e Cafeterias">
-
-                <!-- Moda e Beleza -->
-              <option value="Moda e Confecção">
-              <option value="Calçados e Acessórios">
-              <option value="Cosméticos e Perfumaria">
-              <option value="Salões de Beleza e Estética">
-              <option value="Barbearias">
-
-                <!-- Esporte e Lazer -->
-              <option value="Academias e Personal Trainers">
-              <option value="Clubes e Associações Esportivas">
-              <option value="Artigos Esportivos">
-              <option value="Eventos Esportivos">
-
-                <!-- ONGs e Instituições Públicas -->
-              <option value="Organizações Não Governamentais (ONGs)">
-              <option value="Instituições Públicas">
-              <option value="Cooperativas">
-              <option value="Associações e Sindicatos">
-              <option value="Startups e Inovação">
-              <option value="Empresas de Impacto Social">
-              <option value="Empresas de Capital Aberto (S/A)">
-            </datalist>
-          </div>
-
-          <div class="campo">
-            <label for="porteEmpresa" class="label">Porte da Empresa</label>
-            <div class="input-container">
-              <i class="fas fa-chart-line icone-campo"></i>
-              <input type="text" id="porteEmpresa" name="porteEmpresa" class="input"
-                placeholder="Selecione o porte da empresa" list="opcoesPorte" required>
-            </div>
-
-            <datalist id="opcoesPorte">
-              <option value="MEI - Microempreendedor Individual">
-              <option value="Microempresa (ME)">
-              <option value="Empresa de Pequeno Porte (EPP)">
-
-                <!-- Médias Empresas -->
-              <option value="Média Empresa">
-              <option value="Média-Grande Empresa">
-
-                <!-- Grandes Empresas -->
-              <option value="Grande Empresa">
-              <option value="Empresa de Capital Aberto (S/A)">
-              <option value="Multinacional">
-
-                <!-- Outras Classificações Comuns -->
-              <option value="Startup">
-              <option value="Empresa Familiar">
-              <option value="Cooperativa">
-              <option value="ONG / Organização Sem Fins Lucrativos">
-              <option value="Instituição Pública">
-              <option value="Empresa de Economia Mista">
-              <option value="Holding / Grupo Empresarial">
-            </datalist>
-          </div>
-
-          <div class="campo">
-            <label for="cnpj" class="label">CNPJ</label>
-            <div class="input-container">
-              <i class="fas fa-id-card icone-campo"></i>
-              <input type="text" id="cnpj" name="cnpj" class="input" placeholder="00.000.000/0001-00" required>
-            </div>
-          </div>
-
-          <div class="campo">
-            <label for="estado" class="label">Estado</label>
-            <div class="input-container">
-              <i class="fas fa-map-marker-alt icone-campo"></i>
-              <input type="text" id="estado" name="estado" class="input" placeholder="Selecione o estado"
-                list="opcoesEstado" required>
-            </div>
-            <datalist id="opcoesEstado">
-              <option value="AC - Acre">
-              <option value="AL - Alagoas">
-              <option value="AP - Amapá">
-              <option value="AM - Amazonas">
-              <option value="BA - Bahia">
-              <option value="CE - Ceará">
-              <option value="DF - Distrito Federal">
-              <option value="ES - Espírito Santo">
-              <option value="GO - Goiás">
-              <option value="MA - Maranhão">
-              <option value="MT - Mato Grosso">
-              <option value="MS - Mato Grosso do Sul">
-              <option value="MG - Minas Gerais">
-              <option value="PA - Pará">
-              <option value="PB - Paraíba">
-              <option value="PR - Paraná">
-              <option value="PE - Pernambuco">
-              <option value="PI - Piauí">
-              <option value="RJ - Rio de Janeiro">
-              <option value="RN - Rio Grande do Norte">
-              <option value="RS - Rio Grande do Sul">
-              <option value="RO - Rondônia">
-              <option value="RR - Roraima">
-              <option value="SC - Santa Catarina">
-              <option value="SP - São Paulo">
-              <option value="SE - Sergipe">
-              <option value="TO - Tocantins">
-            </datalist>
-          </div>
-
-          <div class="campo">
-            <label for="cidade" class="label">Cidade</label>
-            <div class="input-container">
-              <i class="fas fa-city icone-campo"></i>
-              <input type="text" id="cidade" name="cidade" class="input" placeholder="Informe a cidade" required>
-            </div>
-          </div>
-        </div>
-        <div class="botoes-acao">
-          <button type="button" class="botao-cancelar" onclick="window.location.href='/AreaRestrita/inserir.html'">
-            <i class="fas fa-times"></i>Cancelar
-          </button>
-
-          <button type="submit" class="botao-salvar" id="botaoSalvar">
-            <i class="fas fa-save"></i>
-            <span class="texto-botao">Salvar Alterações</span>
-          </button>
-        </div>
-      </form>
+        </form>
     </section>
-  </main>
-  <script src="js/toast.js"></script>
-  <script src="js/sidebar-navigation.js"></script>
+</main>
+<script src="js/toast.js"></script>
+<script src="js/sidebar-navigation.js"></script>
 </body>
 </html>

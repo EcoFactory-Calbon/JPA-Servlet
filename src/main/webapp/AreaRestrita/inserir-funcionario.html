@@ -2,51 +2,51 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="PT-BR" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Novo Funcionário | Painel Administrativo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/inserir.css" />
-  <link rel="icon" href="img/icone-logo.ico" type="image/icon" />
+  <link rel="stylesheet" href="/AreaRestrita/css/layout.css" />
+  <link rel="stylesheet" href="/AreaRestrita/css/inserir.css" />
+  <link rel="icon" href="/AreaRestrita/img/icone-logo.ico" type="image/icon" />
 </head>
 
 <body>
   <!---------------------------------------------------- BARRA LATERAL  -------------------------------------------------------->
   <aside class="sidebar">
     <ul>
-      <a href="../inicio.jsp" class="sidebar-item active">
+      <a href="/inicio.jsp" class="sidebar-item active">
         <i class="fas fa-home icon-img"></i> Início
         <span class="label">Início</span>
       </a>
-      <a href="../visualizar-empresa.jsp" class="sidebar-item">
+      <a href="/visualizar-empresa.jsp" class="sidebar-item">
         <i class="fa-solid fa-building"></i>Empresas
         <span class="label">Visualizar</span>
       </a>
-      <a href="visualizar-funcionario.html" class="sidebar-item">
+      <a href="/AreaRestrita/visualizar-funcionario.html" class="sidebar-item">
         <i class="fa-solid fa-people-group"></i>Funcionários
         <span class="label">Visualizar</span>
       </a>
-      <a href="inserir.html" class="sidebar-item">
+      <a href="/AreaRestrita/inserir.html" class="sidebar-item">
         <i class="fas fa-plus icon-img"></i> Inserir
         <span class="label">Inserir</span>
       </a>
-      <a href="editar.html" class="sidebar-item">
+      <a href="/AreaRestrita/editar.html" class="sidebar-item">
         <i class="fa fa-pen icon-img"></i> Editar
         <span class="label">Editar</span>
       </a>
     </ul>
 
     <hr class="divisao-aside">
-    <a href="../index.html" class="sidebar-item">
+    <a href="/index.html" class="sidebar-item">
       <i class="fas fa-right-from-bracket icon-img"></i>
     </a>
   </aside>
 
-  <!---------------------------------------------------------- MAIN - FORMULÁRIO MODERNO -------------------------------------------------------->
+  <!---------------------------------------------------------- MAIN - FORMULÁRIO -------------------------------------------------------->
   <main>
     <!-- Área de mensagens -->
-    <div class="area-mensagens" aria-live="polite"></div>
+    <div class="area-mensagens"></div>
 
     <!-- Card do formulário -->
     <section class="formulario-funcionario">
@@ -56,23 +56,19 @@
           <i class="fas fa-user-edit icone-titulo"></i>
           <h1>Inserir Funcionário</h1>
         </div>
-        <a class="fechar" href="/AreaRestrita/inicio.html"> <i class="fas fa-times"></i></a>
+        <a class="fechar" href="/inicio.jsp"> <i class="fas fa-times"></i></a>
       </div>
 
-      <form class="formulario" id="formEditarFuncionario">
-        <input type="hidden" id="funcionario_id" name="funcionario_id" />
-
+      <form class="formulario">
         <div class="grid-campos">
 
           <!-- Campo Nome -->
           <div class="campo">
-            <label for="nome" class="label">Nome Completo <span class="obrigatorio">*</span></label>
+            <label for="nome" class="label">Nome Completo <span class="obrigatorio"></span></label>
             <div class="input-container">
               <i class="fas fa-user icone-campo"></i>
-              <input type="text" id="nome" name="nome" class="input" required aria-required="true"
-                placeholder="Digite o nome completo" />
+              <input type="text" id="nome" name="nome" class="input" placeholder="Digite o nome completo" />
             </div>
-            <div class="mensagem-erro" id="erro-nome"></div>
           </div>
 
           <!-- Campo E-mail -->
@@ -80,8 +76,7 @@
             <label for="email" class="label">E-mail <span class="obrigatorio">*</span></label>
             <div class="input-container">
               <i class="fas fa-envelope icone-campo"></i>
-              <input type="email" id="email" name="email" class="input" required aria-required="true"
-                placeholder="Digite o e-mail" readonly />
+              <input type="email" id="email" name="email" class="input" placeholder="Digite o e-mail" />
             </div>
             <div class="mensagem-erro" id="erro-email"></div>
           </div>
@@ -99,66 +94,131 @@
                 <option value="Digital Innovation">
               </datalist>
             </div>
-            <div class="mensagem-erro" id="erro-empresa"></div>
           </div>
 
-          <!-- Campo Cargo -->
+          <!-- CARGO -->
           <div class="campo">
-            <label for="cargo" class="label">Cargo <span class="obrigatorio">*</span></label>
+            <label for="cargo" class="label">Cargo</label>
             <div class="input-container">
               <i class="fas fa-briefcase icone-campo"></i>
               <input type="text" id="cargo" name="cargo" class="input" list="opcoesCargo"
                 placeholder="Selecione o cargo" required aria-required="true">
+
               <datalist id="opcoesCargo">
                 <option value="Gerente">
-                <option value="Desenvolvedor">
-                <option value="Analista">
-                <option value="Analista de Dados">
-                <option value="Desenvolvedor Front-End">
+                <option value="Coordenador">
+                <option value="Supervisor">
                 <option value="Gestor de Projetos">
-                <option value="Analista de RH">
-                <option value="Administrador de Redes">
-                <option value="Coordenador de TI">
-                <option value="Analista de Segurança">
-                <option value="UX Designer">
-                <option value="Engenheiro de Software">
-                <option value="QA Tester">
                 <option value="Product Owner">
                 <option value="Scrum Master">
-                <option value="Designer Gráfico">
+                <option value="Analista de Sistemas">
+                <option value="Analista de Dados">
+                <option value="Analista de RH">
+                <option value="Analista Financeiro">
+                <option value="Analista de Segurança">
+                <option value="Analista de Marketing">
+                <option value="Desenvolvedor">
+                <option value="Desenvolvedor Front-End">
+                <option value="Desenvolvedor Back-End">
+                <option value="Desenvolvedor Full Stack">
+                <option value="Engenheiro de Software">
                 <option value="DevOps Engineer">
+                <option value="Administrador de Redes">
+                <option value="UX Designer">
+                <option value="UI Designer">
+                <option value="Designer Gráfico">
+                <option value="QA Tester">
+                <option value="Técnico de Suporte">
+                <option value="Estagiário">
+                <option value="Consultor">
+                <option value="Diretor Executivo (CEO)">
+                <option value="Diretor de Tecnologia (CTO)">
+                <option value="Diretor Financeiro (CFO)">
+                <option value="Diretor de Operações (COO)">
+                <option value="Especialista em Banco de Dados">
               </datalist>
             </div>
-            <div class="mensagem-erro" id="erro-cargo"></div>
           </div>
 
-          <!-- Campo Telefone -->
-          <div class="campo">
-            <label for="telefone" class="label">Telefone</label>
-            <div class="input-container">
-              <i class="fas fa-phone icone-campo"></i>
-              <input type="tel" id="telefone" name="telefone" class="input" placeholder="(11) 99999-9999" />
+            <!-- Setor -->
+            <div class="campo">
+              <label for="setor" class="label">Setor</label>
+              <div class="input-container">
+                <i class="fas fa-briefcase icone-campo"></i>
+                <input type="text" id="setor" name="setor" class="input" list="opcoesSetor"
+                  placeholder="Selecione o setor" required aria-required="true">
+
+                <datalist id="opcoesSetor">
+                  <option value="Administrativo">
+                  <option value="Financeiro">
+                  <option value="Recursos Humanos (RH)">
+                  <option value="Comercial">
+                  <option value="Marketing">
+                  <option value="Vendas">
+                  <option value="Logística">
+                  <option value="Compras">
+                  <option value="Tecnologia da Informação (TI)">
+                  <option value="Desenvolvimento de Software">
+                  <option value="Infraestrutura">
+                  <option value="Segurança da Informação">
+                  <option value="Suporte Técnico">
+                  <option value="Jurídico">
+                  <option value="Engenharia">
+                  <option value="Produção">
+                  <option value="Qualidade">
+                  <option value="Atendimento ao Cliente">
+                  <option value="Serviços Gerais">
+                  <option value="Planejamento Estratégico">
+                  <option value="Pesquisa e Desenvolvimento (P&D)">
+                  <option value="Operações">
+                  <option value="Treinamento e Desenvolvimento">
+                  <option value="Gestão de Projetos">
+                </datalist>
+              </div>
             </div>
-            <div class="mensagem-erro" id="erro-telefone"></div>
+
+
+            <!------- GESTOR ------->
+            <div class="campo">
+              <label for="gestor" class="label">É gestor?</label>
+              <div class="input-container">
+                <i class="fas fa-briefcase icone-campo"></i>
+                <input type="text" id="gestor" name="gestor" class="input" placeholder="É gestor?" required
+                  aria-required="true" list="lista-gestor">
+                <datalist id="lista-gestor">
+                  <option value="Sim">
+                  <option value="Não">
+                </datalist>
+              </div>
+            </div>
+
+            <!-- Campo Telefone -->
+            <div class="campo">
+              <label for="telefone" class="label">Telefone</label>
+              <div class="input-container">
+                <i class="fas fa-phone icone-campo"></i>
+                <input type="tel" id="telefone" name="telefone" class="input" placeholder="(11) 99999-9999" />
+              </div>
+              <div class="mensagem-erro" id="erro-telefone"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="botoes-acao">
-          <button type="button" class="botao-cancelar" onclick="window.location.href='/AreaRestrita/inserir.html'">
-            <i class="fas fa-times"></i>Cancelar
-          </button>
+          <div class="botoes-acao">
+            <button type="button" class="botao-cancelar" onclick="window.location.href='/AreaRestrita/inserir.html'">
+              <i class="fas fa-times"></i>Cancelar
+            </button>
 
-          <button type="submit" class="botao-salvar" id="botaoSalvar">
-            <i class="fas fa-save"></i>
-            <span class="texto-botao">Salvar Alterações</span>
-          </button>
-        </div>
-      </form>
-    </section>
-  </main>
-  <!--------------------------------------------------------------- SCRIPT -------------------------------------------------------------------->
-  <script src="js/toast.js"></script>
-  <script src="js/sidebar-navigation.js"></script>
-</body>
+            <button type="submit" class="botao-salvar" id="botaoSalvar">
+              <i class="fas fa-save"></i>
+              <span class="texto-botao">Salvar Alterações</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <!--------------------------------------------------------------- SCRIPT -------------------------------------------------------------------->
+    <script src="/AreaRestrita/js/toast.js"></script>
+    <script src="/AreaRestrita/js/sidebar-navigation.js"></script>
+  </body>
 
-</html>
+  </html>

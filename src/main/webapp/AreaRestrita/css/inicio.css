@@ -1,4 +1,4 @@
-/*--------------------------------------------------- HEADER  -----------------------------------------*/
+/*-------------------------------------------------------------- HEADER  ---------------------------------------------------*/
 header {
     position: absolute;
     top: 0;
@@ -12,6 +12,13 @@ header {
     z-index: 100;
 }
 
+ main {
+    margin-left: 260px;
+    padding-top: 84px;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
 .bem-vindo .subtitulo {
   font-size: 14px;
   color: #8d9aa6; 
@@ -23,14 +30,6 @@ header {
   font-weight: 700;
   color: #ffffff; 
   margin: 0;
-}
-
-/*--------------------------------------------------- CONTEÚDO PRINCIPAL - ALINHAMENTO -----------------------------------------*/
- main {
-    margin-left: 260px;
-    padding-top: 84px;
-    padding-left: 32px;
-    padding-right: 32px;
 }
 
 /*--------------------------------------------------- CARDS DE ESTATÍSTICAS -----------------------------------------*/

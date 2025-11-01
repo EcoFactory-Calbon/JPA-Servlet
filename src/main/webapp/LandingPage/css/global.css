@@ -5,17 +5,13 @@ header {
     transform: translateX(-50%);
     height: 50px;
     padding: 0 20px;
-    
     display: flex;
     align-items: center;
     gap: 25px;
-
     background-color: #06204547; 
     backdrop-filter: blur(10px);
-    
     border-radius: 50px;
     z-index: 100;
-
     width: auto; 
 }
 
@@ -271,3 +267,12 @@ nav.lista-header ul li a:hover::after {
 
 
 
+.input-error {
+  border: 2px solid #e74c3c !important;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}

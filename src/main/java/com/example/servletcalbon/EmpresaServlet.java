@@ -35,12 +35,14 @@ public class EmpresaServlet extends HttpServlet {
         String porte = request.getParameter("porteEmpresa");
         String estado = request.getParameter("estado");
         String cidade = request.getParameter("cidade");
-        String senha = "$2b$12$eFhm0ypoMpSCQVp/ShP5Ru4vVB3gSnjmIVCoACn9OPTCn2iQGFvHy";
+        String senha = request.getParameter("senha");
+
         // CRIA OBJETOS
         CategoriaEmpresa categoriaEmpresa = new CategoriaEmpresa(null, categoria, descricao);
         Localizacao localizacao = new Localizacao(null, estado, cidade);
         Porte porteObj = new Porte(porte);
-        Empresa empresa = new Empresa(nome, cnpj, senha); // senha será definida depois
+        Empresa empresa = new Empresa(nome, cnpj, senha);
+
 
         // CONEXÃO E DAOs
         Connection connection = ConnectionFactory.getConnection();

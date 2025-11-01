@@ -2,40 +2,40 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="PT-BR" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inserir Empresa | Painel Administrativo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/inserir.css" />
-  <link rel="stylesheet" href="css/editar.css">
-  <link rel="icon" href="img/icone-logo.ico" type="image/icon" />
+  <link rel="stylesheet" href="/AreaRestrita/css/layout.css" />
+  <link rel="stylesheet" href="/AreaRestrita/css/inserir.css" />
+  <link rel="stylesheet" href="/AreaRestrita/css/editar.css">
+  <link rel="icon" href="/AreaRestrita/img/icone-logo.ico" type="image/icon" />
 </head>
 
 <body>
   <!------------------------------------------------------------ BARRA LATERAL ------------------------------------------------------------->
   <aside class="sidebar">
     <ul>
-      <a href="../inicio.jsp" class="sidebar-item active">
+      <a href="/inicio.jsp" class="sidebar-item active">
         <i class="fas fa-home icon-img"></i> Início
         <span class="label">Início</span>
       </a>
-      <a href="../visualizar-empresa.jsp" class="sidebar-item">
+      <a href="/visualizar-empresa.jsp" class="sidebar-item">
         <i class="fa-solid fa-building"></i>Empresas
       </a>
-      <a href="visualizar-funcionario.html" class="sidebar-item">
+      <a href="/AreaRestrita/visualizar-funcionario.html" class="sidebar-item">
         <i class="fa-solid fa-people-group"></i>Funcionários
       </a>
-      <a href="inserir.html" class="sidebar-item">
+      <a href="/AreaRestrita/inserir.html" class="sidebar-item">
         <i class="fas fa-plus icon-img"></i> Inserir
       </a>
-      <a href="editar.html" class="sidebar-item">
+      <a href="/AreaRestrita/editar.html" class="sidebar-item">
         <i class="fa fa-pen icon-img"></i> Editar
       </a>
     </ul>
 
     <hr class="divisao-aside">
-    <a href="../index.html" class="sidebar-item">
+    <a href="/index.html" class="sidebar-item">
       <i class="fas fa-right-from-bracket icon-img"></i>
     </a>
   </aside>
@@ -48,13 +48,13 @@
           <i class="fas fa-building icone-titulo"></i>
           <h1>Editar Empresa</h1>
         </div>
-        <a class="fechar" href="inserir.html"><i class="fas fa-times"></i></a>
+        <a class="fechar" href="/AreaRestrita/inserir.html"><i class="fas fa-times"></i></a>
       </div>
 
       <form class="formulario" id="formInserirEmpresa">
         <div class="grid-campos">
           <div class="campo">
-            <label for="nomeEmpresa" class="label">Nome da Empresa</label>
+            <label for="nome_empresa" class="label">Nome da Empresa</label>
             <div class="input-container">
               <i class="fas fa-building icone-campo"></i>
               <input type="text" id="nome" name="nomeEmpresa" class="input"
@@ -198,6 +198,44 @@
             </datalist>
           </div>
 
+          <!-- Setor -->
+          <div class="campo">
+            <label for="setor" class="label">Setor</label>
+            <div class="input-container">
+              <i class="fas fa-briefcase icone-campo"></i>
+              <input type="text" id="setor" name="setor" class="input" list="opcoesSetor"
+                placeholder="Selecione o setor" required aria-required="true">
+
+              <datalist id="opcoesSetor">
+                <option value="Administrativo">
+                <option value="Financeiro">
+                <option value="Recursos Humanos (RH)">
+                <option value="Comercial">
+                <option value="Marketing">
+                <option value="Vendas">
+                <option value="Logística">
+                <option value="Compras">
+                <option value="Tecnologia da Informação (TI)">
+                <option value="Desenvolvimento de Software">
+                <option value="Infraestrutura">
+                <option value="Segurança da Informação">
+                <option value="Suporte Técnico">
+                <option value="Jurídico">
+                <option value="Engenharia">
+                <option value="Produção">
+                <option value="Qualidade">
+                <option value="Atendimento ao Cliente">
+                <option value="Serviços Gerais">
+                <option value="Planejamento Estratégico">
+                <option value="Pesquisa e Desenvolvimento (P&D)">
+                <option value="Operações">
+                <option value="Treinamento e Desenvolvimento">
+                <option value="Gestão de Projetos">
+              </datalist>
+            </div>
+          </div>
+
+
           <div class="campo">
             <label for="porteEmpresa" class="label">Porte da Empresa</label>
             <div class="input-container">
@@ -278,7 +316,7 @@
 
         </div>
         <div class="botoes-acao">
-          <button type="button" class="botao-cancelar" onclick="window.location.href='inserir.html'">
+          <button type="button" class="botao-cancelar" onclick="window.location.href='/AreaRestrita/inserir.html'">
             <i class="fas fa-times"></i>Cancelar
           </button>
 
@@ -292,8 +330,8 @@
 
   </main>
 
-  <script src="js/toast.js"></script>
-  <script src="js/sidebar-navigation.js"></script>
+  <script src="/AreaRestrita/js/toast.js"></script>
+  <script src="/AreaRestrita/js/sidebar-navigation.js"></script>
 </body>
 
 </html>

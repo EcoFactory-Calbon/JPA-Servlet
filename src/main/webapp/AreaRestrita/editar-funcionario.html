@@ -2,14 +2,14 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="PT-BR" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Editar Funcionário | Painel Administrativo</title>
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/editar.css" />
-  <link rel="stylesheet" href="css/inserir.css">
+  <link rel="stylesheet" href="/AreaRestrita/css/layout.css" />
+  <link rel="stylesheet" href="/AreaRestrita/css/editar.css" />
+  <link rel="stylesheet" href="/AreaRestrita/css/inserir.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="icon" href="img/icone-logo.ico" type="image/icon" />
+  <link rel="icon" href="/AreaRestrita/img/icone-logo.ico" type="image/icon" />
 </head>
 
 <body>
@@ -21,29 +21,29 @@
         <span class="label">Início</span>
       </a>
 
-      <a href="../visualizar-empresa.jsp" class="sidebar-item">
+      <a href="/visualizar-empresa.jsp" class="sidebar-item">
         <i class="fa-solid fa-building"></i>Empresas
         <span class="label">Visualizar</span>
       </a>
 
-      <a href="visualizar-funcionario.html" class="sidebar-item">
+      <a href="/AreaRestrita/visualizar-funcionario.html" class="sidebar-item">
         <i class="fa-solid fa-people-group"></i> Funcionários
         <span class="label">Visualizar</span>
       </a>
 
-      <a href="inserir.html" class="sidebar-item">
+      <a href="/AreaRestrita/inserir.html" class="sidebar-item">
         <i class="fas fa-plus icon-img"></i> Inserir
         <span class="label">Inserir</span>
       </a>
 
-      <a href="editar.html" class="sidebar-item">
+      <a href="/AreaRestrita/editar.html" class="sidebar-item">
         <i class="fa fa-pen icon-img"></i> Editar
         <span class="label">Editar</span>
       </a>
 
     </ul>
     <hr class="divisao-aside">
-    <a href="../index.html" class="sidebar-item">
+    <a href="/index.html" class="sidebar-item">
       <i class="fas fa-right-from-bracket icon-img"></i>
     </a>
 
@@ -59,7 +59,7 @@
           <i class="fas fa-user-edit icone-titulo"></i>
           <h1>Editar Funcionário</h1>
         </div>
-        <a class="fechar" href="../inicio.jsp"> <i class="fas fa-times"></i></a>
+        <a class="fechar" href="/inicio.jsp"> <i class="fas fa-times"></i></a>
       </div>
 
       <form class="formulario" id="formEditarFuncionario">
@@ -73,9 +73,7 @@
               <input type="text" id="nome" name="nome" class="input" required aria-required="true"
                 placeholder="Selecione o nome do funcionário a ser editado" list="listaFuncionarios" />
             </div>
-            <div class="mensagem-erro" id="erro-nome"></div>
           </div>
-
           <datalist id="listaFuncionarios">
             <option value="Ana Silva"></option>
             <option value="Bruno Santos"></option>
@@ -86,7 +84,6 @@
           </datalist>
 
           <!-- Campo Cargo -->
-          <!-- Campo Cargo convertido em datalist -->
           <div class="campo">
             <label for="cargo" class="label">Cargo</label>
             <div class="input-container">
@@ -136,7 +133,7 @@
             <div class="mensagem-erro" id="erro-telefone"></div>
           </div>
 
-          <!-- Campo Empresa convertido em datalist -->
+          <!-- Campo Empresa -->
           <div class="campo">
             <label for="empresa" class="label">Empresa</label>
             <div class="input-container">
@@ -152,6 +149,57 @@
             </datalist>
           </div>
 
+          <!-- Campo Setor -->
+          <div class="campo">
+            <label for="gestor" class="label">É gestor?</label>
+            <div class="input-container">
+              <i class="fas fa-briefcase icone-campo"></i>
+              <input type="text" id="gestor" name="gestor" class="input" placeholder="É gestor?" required
+                aria-required="true" list="lista-gestor">
+              <datalist id="lista-gestor">
+                <option value="Sim">
+                <option value="Não">
+              </datalist>
+            </div>
+          </div>
+
+            <!-- Setor -->
+            <div class="campo">
+              <label for="setor" class="label">Setor</label>
+              <div class="input-container">
+                <i class="fas fa-briefcase icone-campo"></i>
+                <input type="text" id="setor" name="setor" class="input" list="opcoesSetor"
+                  placeholder="Selecione o setor" required aria-required="true">
+
+                <datalist id="opcoesSetor">
+                  <option value="Administrativo">
+                  <option value="Financeiro">
+                  <option value="Recursos Humanos (RH)">
+                  <option value="Comercial">
+                  <option value="Marketing">
+                  <option value="Vendas">
+                  <option value="Logística">
+                  <option value="Compras">
+                  <option value="Tecnologia da Informação (TI)">
+                  <option value="Desenvolvimento de Software">
+                  <option value="Infraestrutura">
+                  <option value="Segurança da Informação">
+                  <option value="Suporte Técnico">
+                  <option value="Jurídico">
+                  <option value="Engenharia">
+                  <option value="Produção">
+                  <option value="Qualidade">
+                  <option value="Atendimento ao Cliente">
+                  <option value="Serviços Gerais">
+                  <option value="Planejamento Estratégico">
+                  <option value="Pesquisa e Desenvolvimento (P&D)">
+                  <option value="Operações">
+                  <option value="Treinamento e Desenvolvimento">
+                  <option value="Gestão de Projetos">
+                </datalist>
+              </div>
+            </div>
+
           <!-- Campo Senha -->
           <div class="campo">
             <label for="senha_hash" class="label">Nova Senha</label>
@@ -165,7 +213,7 @@
         </div>
 
         <div class="botoes-acao">
-          <button type="button" class="botao-cancelar" onclick="window.location.href='inserir.html'">
+          <button type="button" class="botao-cancelar" onclick="window.location.href='/AreaRestrita/inserir.html'">
             <i class="fas fa-times"></i>Cancelar
           </button>
 
@@ -185,8 +233,8 @@
   </div>
 
   <!------------------------------------------------------- SCRIPT --------------------------------------------------------------------------->
-  <script src="js/toast.js"></script>
-  <script src="js/sidebar-navigation.js"></script>
+  <script src="/AreaRestrita/js/toast.js"></script>
+  <script src="/AreaRestrita/js/sidebar-navigation.js"></script>
 </body>
 
 </html>

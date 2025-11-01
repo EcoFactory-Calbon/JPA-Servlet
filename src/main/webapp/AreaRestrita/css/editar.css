@@ -12,11 +12,6 @@ a {
   text-decoration: none;
 }
 
-/*--------------------------------------------------- ÁREA DE MENSAGENS -----------------------------------------*/
-.area-mensagens {
-  margin-bottom: 24px;
-}
-
 /*--------------------------------------------------- CABEÇALHO DO FORMULÁRIO -----------------------------------------*/
 .cabecalho {
   background: linear-gradient(135deg, #1a3558, #2a4a6b);
@@ -140,21 +135,6 @@ option {
   color: #6b7280;
   font-style: italic;
 }
-/*--------------------------------------------------- MENSAGENS DE ERRO -----------------------------------------*/
-.mensagem-erro {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  color: #ff4757;
-  margin-top: 4px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 20px;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: all 0.3s ease;
-}
-
 
 /*--------------------------------------------------- BOTÕES - AÇÃO -----------------------------------------*/
 .botoes-acao {

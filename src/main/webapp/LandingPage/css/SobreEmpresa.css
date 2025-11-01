@@ -23,16 +23,15 @@ a {
 
 /* ====== SEÇÃO PRINCIPAL ====== */
 .main-content {
+  position: relative; /* necessário para o overlay */
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   height: 100vh;
   padding: 0 10%;
-  gap: 60px;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
+  gap: 50px;
+  background-image: url("/Calbon-LandingPage/LandingPage/assets/FundoEmpresa.png");
+  z-index: 0;
 }
 
 /* ====== TEXTO ====== */
@@ -83,6 +82,156 @@ a {
   }
 }
 
+
+
+/*---------------------------------------------- O PROBLEMA E POLUIÇÃO URBANA ----------------------------------------------------*/
+.lading-page-pagina-group4 {
+	position: relative;
+	height: 69.06rem;
+	flex-shrink: 0;
+	text-align: left;
+}
+
+/* Column */
+.column {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+}
+
+.column-subtitle {
+	color: #fff;
+	font-size: 2.65rem;
+	font-weight: 600;
+}
+
+.column-text-bottom {
+	color: #bcd3de;
+	font-size: 1.48rem;
+	font-weight: 400;
+}
+/* End column */
+
+.lading-page-pagina-noticia {
+	position: absolute;
+	top: 0;
+	left: -0.25rem;
+	right: 0;
+	height: 69.06rem;
+}
+
+.lading-page-pagina-col4 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	padding: 40.06rem 7.19rem 0;
+}
+
+.lading-page-pagina-rect {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 68.31rem;
+	background: linear-gradient(180deg, #050E16 2%, #0A1728 94%);
+}
+
+.lading-page-pagina-group5 {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 29rem;
+	max-width: 39rem;
+	flex-shrink: 0;
+}
+
+.lading-page-pagina-img1 {
+	position: absolute;
+	top: 0;
+	right: 0;
+	max-width: 35.81rem;
+}
+
+.lading-page-pagina-img2 {
+	position: absolute;
+	top: 14.56rem;
+	left: 0;
+	width: 100%;
+	max-width: 25.62rem;
+	border: 11px solid #07101c;
+}
+
+.lading-page-pagina-group6 {
+	position: absolute;
+	z-index: 2;
+	top: 7.19rem;
+	left: 6.5rem;
+	width: calc(100% - 13rem);
+	height: 27.12rem;
+	max-width: 40.75rem;
+}
+
+.lading-page-pagina-img3 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	max-width: 37.62rem;
+}
+
+.lading-page-pagina-img4 {
+	position: absolute;
+	top: 11.44rem;
+	right: 0;
+	width: 21rem;
+	border: 11px solid #081322;
+}
+
+.col1 {
+	position: absolute;
+	z-index: 3;
+	top: 9.5rem;
+	right: 0.44rem;
+	width: calc(100% - 0.88rem);
+	max-width: 41.5rem;
+}
+
+.col1 .column-subtitle {
+	margin: 0 0.62rem;
+}
+
+.col1 .column-line {
+	margin: -2.25rem 0.5rem 0 0;
+	flex-shrink: 0;
+	border-top: 1px solid #fff;
+}
+
+.col1 .column-text-bottom {
+	margin: 2.19rem 0 0 0.12rem;
+}
+
+.col2 {
+	position: absolute;
+	z-index: 4;
+	top: 42.06rem;
+	left: 6.25rem;
+	width: calc(100% - 12.5rem);
+	max-width: 41.19rem;
+	gap: 0.75rem;
+}
+
+.col2 .column-line {
+	margin-right: 0.94rem;
+	flex-shrink: 0;
+	border-top: 1px solid #fff;
+}
+
+.col2 .column-text-bottom {
+	margin-top: 2.06rem;
+}
 /* --------------------------------------------- VALORES --------------------------------------- */
 .container-valores {
   border-radius: 20px;
@@ -127,6 +276,62 @@ a {
   user-select: none;
   transition: transform 0.3s;
 }
+
+/* .franqueza {
+  border: 2px solid #a80011;
+  background-color: #D5202A;
+  width: 200px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.disciplina {
+  border: 2px solid #ff7b00;
+  background-color: #ef933b;
+  width: 200px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.determinacao {
+  border: 2px solid #4a8f36;
+  background-color: #79AB5C;
+  width: 200px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.simplicidade {
+  border: 2px solid #1a804a;
+  background-color: #46A261;
+  width: 200px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.humildade {
+  border: 2px solid #0b6fa4;
+  background-color: #1B9BC7;
+  width: 200px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.disponibilidade {
+  border: 2px solid #e04b1a;
+  background-color: #e86339;
+  width: 200px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.atitude-dono {
+  border: 2px solid #75c8f1;
+  background-color: #A5CDE1;
+  width: 250px;
+  padding: 15px;
+  border-radius: 15px;
+} */
 
 /* /---------------------------------------------- PLANOS ----------------------------------------------------/ */
 
@@ -280,6 +485,8 @@ a {
   box-shadow: 0 0 15px rgba(0, 134, 212, 0.3);
 }
 
+
+
 /* MISSÃO */
 .mission {
   text-align: center;
@@ -292,10 +499,85 @@ span {
   color: transparent;
 }
 
+/* ===== SEÇÃO FUNCIONALIDADES BANCÁRIAS (INSPIRADA NO BANKING) ===== */
+.secao-funcionalidades-bancarias {
+  background-color: #0d0c34;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.cabecalho-funcionalidades {
+  background: transparent;
+  padding: 80px 0 60px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.titulo-funcionalidades {
+  font-size: 3.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.container-cards-bancarios {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 20px 80px 20px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.card-funcionalidade-bancaria {
+  background: rgb(11, 206, 255);
+  border-radius: 20px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 320px;
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.card-funcionalidade-bancaria:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.titulo-card-bancario {
+  font-size: 1.2rem;
+  color: #333333;
+  font-weight: 600;
+  margin-bottom: 25px;
+  line-height: 1.3;
+  text-align: center;
+  padding: 0 10px;
+}
+
+
+.imagem-smartphone {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+
 /* ===== SEÇÃO BEM-ESTAR MENTAL (INSPIRADA NO CLEARMIND YOGA) ===== */
 .secao-bem-estar {
   background: linear-gradient(90deg, #10b7ca, rgb(0, 140, 255));
-  padding: 10px 5%;
+  padding: 30px 5%;
   margin: 0 auto;
   width: 1300px;
   border-radius: 20px;
@@ -345,6 +627,10 @@ span {
 
 .imagem-app {
   width: 300px;
+  /* width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); */
 }
 
 /* ===== SEÇÃO MISSÃO ===== */
@@ -632,7 +918,7 @@ section.funcionalidades {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-image: url(/LandingPage/assets/fundo-func.svg);
+  background-image: url(/Calbon-LandingPage/LandingPage/assets/Design\ sem\ nome\ \(3\).svg);
   border-radius: 40px;
   padding: 40px 60px;
   height: 320px;
@@ -666,7 +952,7 @@ section.funcionalidades {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-image: url(/LandingPage/assets/fundo-func.svg);
+  background-image: url(/Calbon-LandingPage/LandingPage/assets/Design\ sem\ nome\ \(3\).svg);
   border-radius: 40px;
   padding: 40px 60px;
   height: 320px;

@@ -61,7 +61,7 @@ function salvarNovaEmpresa() {
     const formData = new FormData(form);
     
     // Validar campos obrigatórios
-    const campos = ['nomeEmpresa', 'cnpj', 'categoria', 'porte', 'localizacao', 'status'];
+    const campos = ['nome_empresa', 'cnpj', 'categoria', 'porte', 'localizacao', 'status'];
     for (const campo of campos) {
         if (!formData.get(campo)) {
             mostrarToast('Erro', 'Todos os campos são obrigatórios!', 'error');
@@ -79,7 +79,7 @@ function salvarNovaEmpresa() {
     // Criar nova empresa
     const novaEmpresa = {
         id: Date.now(), // ID único baseado em timestamp
-        nomeEmpresa: formData.get('nomeEmpresa'),
+        nome_empresa: formData.get('nome_empresa'),
         cnpj: formData.get('cnpj'),
         categoria: formData.get('categoria'),
         porte: formData.get('porte'),
@@ -112,7 +112,7 @@ function adicionarEmpresaNaTabela(empresa) {
     const statusText = empresa.status === 'ativo' ? 'Ativa' : 'Inativa';
     
     novaLinha.innerHTML = `
-        <td>${empresa.nomeEmpresa}</td>
+        <td>${empresa.nome_empresa}</td>
         <td>${empresa.cnpj}</td>
         <td>${empresa.categoria}</td>
         <td>${empresa.porte}</td>
@@ -152,7 +152,7 @@ function editarRegistroEmpresa(id) {
     // Armazenar dados originais
     const celulas = linha.querySelectorAll('td');
     dadosOriginaisEmpresa[id] = {
-        nomeEmpresa: celulas[0].textContent,
+        nome_empresa: celulas[0].textContent,
         cnpj: celulas[1].textContent,
         categoria: celulas[2].textContent,
         porte: celulas[3].textContent,

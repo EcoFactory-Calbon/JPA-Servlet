@@ -20,6 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
         // 3. Usa requestAnimationFrame para rolagem suave e otimizada
         requestAnimationFrame(loop);
     }
-
     loop();
 });

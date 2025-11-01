@@ -24,9 +24,9 @@ function identificarPaginaAtual() {
 
   // mapeamento usado para identificar páginas dentro de /AreaRestrita
   const mapeamentoPaginas = {
-    '/AreaRestrita/inicio.html': 'inicio.html',
+    '/AreaRestrita/inicio.jsp': 'inicio.jsp',
     '/AreaRestrita/visualizar-funcionario.html': 'visualizar-funcionario.html',
-    '/AreaRestrita/visualizar-empresa.html': 'visualizar-empresa.jsp',
+    '/AreaRestrita/visualizar-empresa.jsp': 'visualizar-empresa.jsp',
     '/AreaRestrita/inserir.html': 'inserir.html',
     '/AreaRestrita/inserir-funcionario.html': 'inserir-funcionario.html',
     '/AreaRestrita/inserir-empresa.html': 'inserir-empresa.html',

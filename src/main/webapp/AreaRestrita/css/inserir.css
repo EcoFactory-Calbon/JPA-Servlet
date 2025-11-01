@@ -12,17 +12,6 @@ a {
   text-decoration: none;
 }
 
-/*--------------------------------------------------- ÁREA DE MENSAGENS -----------------------------------------*/
-.formulario-empresa {
-  background: #0F1E32;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid #1a2a3a;
-  overflow: hidden;
-  animation: fadeInUp 0.6s ease-out;
-}
-
-
 /*--------------------------------------------------- CABEÇALHO DO FORMULÁRIO -----------------------------------------*/
 .cabecalho {
   background: linear-gradient(135deg, #1a3558, #2a4a6b);
@@ -74,8 +63,9 @@ a {
   transform: scale(1.1);
 }
 
-/*--------------------------------------------------- CARD DO FORMULÁRIO -----------------------------------------*/
-.formulario-funcionario {
+/*--------------------------------------------------- FORMULÁRIO -----------------------------------------*/
+.formulario-funcionario,
+.formulario-empresa {
   background: #0F1E32;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -84,7 +74,7 @@ a {
   animation: fadeInUp 0.6s ease-out;
 }
 
-/*--------------------------------------------------- FORMULÁRIO -----------------------------------------*/
+
 .formulario {
   padding: 32px;
 }
@@ -151,7 +141,8 @@ option {
   border-top: 1px solid #374151;
 }
 
-.botao-salvar, .botao-cancelar {
+.botao-salvar,
+.botao-cancelar {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -226,7 +217,7 @@ option {
 }
 
 
-/* ===== INPUTS COM ÍCONES ===== */
+/* ------- INPUTS COM ÍCONES ---------- */
 .input-container {
   position: relative;
   display: flex;
@@ -241,7 +232,8 @@ option {
   pointer-events: none;
 }
 
-.input, .select {
+.input,
+.select {
   width: 100%;
   padding: 20px 20px 15px 50px;
   background: #15263a;
@@ -253,7 +245,8 @@ option {
   outline: none;
 }
 
-.input, .select::placeholder {
+.input,
+.select::placeholder {
   color: #6c7a8f;
 }
 
@@ -262,5 +255,3 @@ option {
   border-color: #00baff;
   box-shadow: 0 0 8px rgba(0, 186, 255, 0.4);
 }
-
-/*--------------------------------------------------- ANIMAÇÕES -----------------------------------------*/

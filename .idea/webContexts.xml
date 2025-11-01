@@ -4,9 +4,12 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/AreaRestrita/editar-empresa.html" value="file://$PROJECT_DIR$/src/main/webapp/AreaRestrita" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/LandingPage/SobreEmpresa.html" value="file://$PROJECT_DIR$/src/main/webapp/LandingPage" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/LandingPage/criar-senha.html" value="file://$PROJECT_DIR$/src/main/webapp/LandingPage" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/CategoriaEmpresa.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/criar-senha.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/empresa.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/visualizar-empresa.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>
   </component>
