@@ -1,0 +1,29 @@
+[33mf2f7ae7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mprojeto-correto[m[33m, [m[1;31morigin/projeto-correto[m[33m)[m implementando funcionario na landing
+[33mf229e16[m Implementando servlet da empresa na landing
+[33m0a431f5[m Corrigindo estrutura de arquivos
+[33m64bf3d6[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain-antiga[m[33m, [m[1;32mmain[m[33m)[m Organizando códido do FuncionarioDAO
+[33mdc4c50a[m Comentando no metodo findByID() no FuncionarioDAO
+[33m6a27881[m Comentando no metodo findAll() no FuncionarioDAO
+[33mfc28fa2[m Comentando no metodo delete() no FuncionarioDAO
+[33m70d187e[m Comentando no método update() no FuncionarioDAO()
+[33mfe84cc8[m Comentando os construtores e o metodo save() no FuncionarioDAO
+[33me0d689f[m Comentando o método findById() no LocalizacaoDAO
+[33ma49854a[m Comentando no método findAll() no LocalizacaoDAO
+[33m86457bc[m Comentando no método delete() no LocalizacaoDAO()
+[33meb219a3[m Comentando no método update() no LocalizacaoDAO
+[33m231af31[m Comentando o método save() e os contrutores da classe LocalizacaoDAO
+[33m204d858[m Organizando código FuncionarioServlet
+[33m8196739[m Criando métods save() em funcionario, localização e cargo no FuncionarioServlet
+[33m646f333[m Criando conexoes com os DAOs no FuncionarioServlet
+[33me98db8b[m Criando objetos FuncionarioServlet
+[33mfbb0247[m Arrumando DAO Funcionario
+[33m2452a57[m Criando Funcionario Servlet
+[33m275ad38[m Backup
+[33m83caf9f[m[33m ([m[1;31morigin/repMurilo[m[33m)[m colocando servlet na landing
+[33mcb1c397[m Criando uma função para mostrar as informações através do id
+[33m93fe69f[m Criando metodo que relaciona o ID da empresa com o porte e a categoria
+[33m6d940ad[m[33m ([m[1;32mrepServlet[m[33m)[m testando commit
+[33mdbb0a4c[m[33m ([m[1;31morigin/repServlet[m[33m)[m Correção listar empresas
+[33m6940dd3[m Chore(connection): Arrumando o connection colocando no .gitignore
+[33m7beb85e[m Remove dados sensíveis
+[33mecc4179[m primeiro push
