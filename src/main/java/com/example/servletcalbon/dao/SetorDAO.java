@@ -1,7 +1,7 @@
 package com.example.servletcalbon.dao;
 
-import com.example.servletcalbon.infra.ConnectionFactory;
 import com.example.servletcalbon.modelEmpresa.Setor;
+import com.example.servletcalbon.infra.ConnectionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,165 +10,91 @@ import java.util.Optional;
 
 public class SetorDAO {
 
-    public SetorDAO() {
+    private final Connection connection;
+
+    public SetorDAO(Connection connection) {
+        this.connection = connection;
     }
 
-    // SALVAR (verifica se já existe pelo nome)
+    // SALVAR SETOR
     public Setor save(Setor setor) {
-        Optional<Setor> existente = findByNome(setor.getNome());
-        if (existente.isPresent()) {
-            return existente.get();
-        }
-
         String sql = "INSERT INTO setor (nome, id_empresa) VALUES (?, ?)";
-        Connection connection = null;
-
-        try {
-            connection = ConnectionFactory.getConnection();
-            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setString(1, setor.getNome());
-                ps.setInt(2, setor.getIdEmpresa());
-                ps.executeUpdate();
-
-                try (ResultSet rs = ps.getGeneratedKeys()) {
-                    if (rs.next()) {
-                        setor.setId(rs.getInt(1));
-                    }
-                }
+        try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            stmt.setString(1, setor.getNome());
+            stmt.setInt(2, setor.getIdEmpresa());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                setor.setId(rs.getInt(1));
             }
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao salvar Setor: " + ex.getMessage(), ex);
-        } finally {
-            ConnectionFactory.fechar(connection);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao salvar Setor: " + e.getMessage(), e);
         }
-
         return setor;
     }
 
-    // BUSCAR POR NOME
-    public Optional<Setor> findByNome(String nome) {
-        String sql = "SELECT * FROM setor WHERE nome = ?";
-        Connection connection = null;
-
-        try {
-            connection = ConnectionFactory.getConnection();
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setString(1, nome);
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) {
-                        Setor setor = new Setor(
-                                rs.getInt("id"),
-                                rs.getString("nome"),
-                                rs.getInt("id_empresa")
-                        );
-                        return Optional.of(setor);
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao buscar Setor por nome: " + ex.getMessage(), ex);
-        } finally {
-            ConnectionFactory.fechar(connection);
-        }
-
-        return Optional.empty();
-    }
-
-    // ATUALIZAR
+    // ATUALIZAR SETOR
     public Setor update(Setor setor) {
         String sql = "UPDATE setor SET nome = ?, id_empresa = ? WHERE id = ?";
-        Connection connection = null;
-
-        try {
-            connection = ConnectionFactory.getConnection();
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setString(1, setor.getNome());
-                ps.setInt(2, setor.getIdEmpresa());
-                ps.setInt(3, setor.getId());
-                ps.executeUpdate();
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao atualizar Setor: " + ex.getMessage(), ex);
-        } finally {
-            ConnectionFactory.fechar(connection);
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, setor.getNome());
+            stmt.setInt(2, setor.getIdEmpresa());
+            stmt.setInt(3, setor.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao atualizar Setor: " + e.getMessage(), e);
         }
-
         return setor;
     }
 
-    // DELETAR
+    // DELETAR SETOR
     public void delete(int id) {
         String sql = "DELETE FROM setor WHERE id = ?";
-        Connection connection = null;
-
-        try {
-            connection = ConnectionFactory.getConnection();
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, id);
-                ps.executeUpdate();
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao deletar Setor: " + ex.getMessage(), ex);
-        } finally {
-            ConnectionFactory.fechar(connection);
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao excluir Setor: " + e.getMessage(), e);
         }
     }
 
-    // LISTAR TODOS
+    // LISTAR TODOS OS SETORES
     public List<Setor> findAll() {
         List<Setor> setores = new ArrayList<>();
-        String sql = "SELECT * FROM setor ORDER BY nome";
-        Connection connection = null;
-
-        try {
-            connection = ConnectionFactory.getConnection();
-            try (PreparedStatement ps = connection.prepareStatement(sql);
-                 ResultSet rs = ps.executeQuery()) {
-
-                while (rs.next()) {
-                    Setor setor = new Setor(
-                            rs.getInt("id"),
-                            rs.getString("nome"),
-                            rs.getInt("id_empresa")
-                    );
-                    setores.add(setor);
-                }
+        String sql = "SELECT * FROM setor";
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Setor s = new Setor(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getInt("id_empresa")
+                );
+                setores.add(s);
             }
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao listar Setores: " + ex.getMessage(), ex);
-        } finally {
-            ConnectionFactory.fechar(connection);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao listar Setores: " + e.getMessage(), e);
         }
-
         return setores;
     }
 
-    // BUSCAR POR ID
+    // BUSCAR SETOR POR ID
     public Optional<Setor> findById(int id) {
         String sql = "SELECT * FROM setor WHERE id = ?";
-        Connection connection = null;
-
-        try {
-            connection = ConnectionFactory.getConnection();
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, id);
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) {
-                        Setor setor = new Setor(
-                                rs.getInt("id"),
-                                rs.getString("nome"),
-                                rs.getInt("id_empresa")
-                        );
-                        return Optional.of(setor);
-                    }
-                }
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Setor s = new Setor(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getInt("id_empresa")
+                );
+                return Optional.of(s);
             }
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao buscar Setor por ID: " + ex.getMessage(), ex);
-        } finally {
-            ConnectionFactory.fechar(connection);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar Setor: " + e.getMessage(), e);
         }
-
         return Optional.empty();
     }
 }

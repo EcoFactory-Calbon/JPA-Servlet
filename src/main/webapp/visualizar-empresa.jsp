@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="AreaRestrita/css/visualizar-empresa.css" />
     <link rel="stylesheet" href="AreaRestrita/css/acoes.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="icon" href="AreaRestrita/img/icone-logo.ico" type="image/icon" />
+    <link rel="icon" href="LandingPage/assets/icone-logo.png" type="image/icon" />
 </head>
 
 <body>
 <!--------------------------------------------------------- HEADER --------------------------------------------------------->
 <header>
     <div class="bem-vindo">
-        <span class="subtitulo">Olá Júlia,</span>
+        <span class="subtitulo">Olá Calbon,</span>
         <h1 class="titulo">Visualizar Empresas</h1>
     </div>
 </header>
@@ -39,7 +39,7 @@
             <i class="fa-solid fa-building"></i>Empresas
             <span class="label">Visualizar</span>
         </a>
-        <a href="AreaRestrita/visualizar-funcionario.html" class="sidebar-item">
+        <a href="visualizar-funcionario.jsp" class="sidebar-item">
             <i class="fa-solid fa-people-group"></i>Funcionários
             <span class="label">Visualizar</span>
         </a>
@@ -47,10 +47,7 @@
             <i class="fas fa-plus icon-img"></i> Inserir
             <span class="label">Inserir</span>
         </a>
-        <a href="AreaRestrita/editar.html" class="sidebar-item">
-            <i class="fa fa-pen icon-img"></i> Editar
-            <span class="label">Editar</span>
-        </a>
+
     </ul>
 
     <hr class="divisao-aside">
@@ -108,7 +105,7 @@
                     <button type="button" class="botao-excluir" data-id="<%= empresa.getId() %>" title="Excluir empresa">
                         <i class="fas fa-trash"></i>
                     </button>
-                    <a href="AreaRestrita/visualizar-funcionario.html" class="botao-visualizar" title="Ver funcionários">
+                    <a href="visualizar-funcionario.jsp" class="botao-visualizar" title="Ver funcionários">
                         <i class="fas fa-users"></i>
                     </a>
                 </td>

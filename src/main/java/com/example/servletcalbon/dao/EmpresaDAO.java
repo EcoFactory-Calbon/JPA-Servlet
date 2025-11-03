@@ -6,6 +6,7 @@ import com.example.servletcalbon.modelEmpresa.Empresa;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class EmpresaDAO {
 
@@ -113,4 +114,39 @@ public class EmpresaDAO {
             throw new RuntimeException("Erro ao excluir empresa: " + e.getMessage(), e);
         }
     }
+
+
+    public Optional<Empresa> findByNome(String empresaNome) throws SQLException {
+        String sql = """
+        SELECT 
+            e.id AS empresa_id,
+            e.nome AS empresa_nome,
+            e.cnpj AS empresa_cnpj,
+            e.senha AS empresa_senha,
+            e.id_localizacao,
+            e.id_categoria,
+            e.id_porte
+        FROM empresa e
+        WHERE e.nome = ?
+    """;
+
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setString(1, empresaNome);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            Empresa empresa = new Empresa();
+            empresa.setId(rs.getInt("empresa_id"));
+            empresa.setNome(rs.getString("empresa_nome"));
+            empresa.setCnpj(rs.getString("empresa_cnpj"));
+            empresa.setSenha(rs.getString("empresa_senha"));
+            empresa.setIdLocalizacao(rs.getInt("id_localizacao"));
+            empresa.setIdCategoria(rs.getInt("id_categoria"));
+            empresa.setIdPorte(rs.getInt("id_porte"));
+            return Optional.of(empresa);
+        }
+
+        return Optional.empty();
+    }
+
 }

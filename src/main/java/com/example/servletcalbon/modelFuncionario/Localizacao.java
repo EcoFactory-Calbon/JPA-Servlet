@@ -13,7 +13,10 @@ public class Localizacao {
         this.cidade = cidade;
     }
 
-//    GETTERS E SETTERS
+    public Localizacao(String estado, String cidade) {
+    }
+
+    //    GETTERS E SETTERS
     public Long getId() { return id; }
     public String getEstado() { return estado; }
     public String getCidade() { return cidade; }
